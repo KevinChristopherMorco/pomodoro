@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import chick from "../gif/chick.gif";
+import test from "../gif/test.gif";
 
 const Timer = () => {
   const [seconds, setSeconds] = useState(0);
@@ -48,8 +50,8 @@ const Timer = () => {
   }, [action, seconds, minutes]);
 
   return (
-    <div className="h-full flex flex-col gap-y-[20%]">
-      <ul className="w-[100%] my-10 flex justify-around">
+    <div className="h-full flex flex-col">
+      <ul className="w-[100%] my-10 flex justify-around font-medium">
         <li id="pomodoro" className="cursor-pointer" onClick={handleTime}>
           Pomodoro
         </li>
@@ -60,18 +62,26 @@ const Timer = () => {
           Short Break
         </li>
       </ul>
-      <div className="p-4 flex flex-col items-center gap-y-20">
-        <h1 className="text-4xl font-bold">
-          {String(minutes).padStart(2, 0)} : {String(seconds).padStart(2, 0)}
-        </h1>
+      <div className="p-4 flex flex-col items-center gap-y-14">
+        <div className="flex flex-col gap-y-10 text-center">
+          <img src={minutes <= 23 ? test : chick} alt="" />
+          <h1 className="text-6xl font-bold">
+            {String(minutes).padStart(2, 0)} : {String(seconds).padStart(2, 0)}
+          </h1>
+          <h6 className="text-lg font-medium italic">Chicken is growing...</h6>
+        </div>
         <div className="flex justify-center gap-x-10">
           <button
-            className="bg-accent p-4 flex justify-center items-center font-bold text-xl rounded-full"
+            className="bg-accent p-4 flex justify-center items-center font-bold text-xl text-white rounded-full"
             onClick={handleUserAction}
           >
-            {action ? "Pause" : <ion-icon name="play"></ion-icon>}
+            {action ? (
+              <ion-icon name="pause"></ion-icon>
+            ) : (
+              <ion-icon name="play"></ion-icon>
+            )}
           </button>
-          <button className="p-4 flex justify-center items-center font-bold text-xl border-2 border-accent rounded-full">
+          <button className="p-4 flex justify-center items-center font-bold text-xl border-2 border-secondary rounded-full">
             <ion-icon name="refresh"></ion-icon>
           </button>
         </div>

@@ -11,7 +11,7 @@
     @apply h-full;
   }
   body {
-    @apply h-full min-h-full bg-primary text-white;
+    @apply h-full min-h-full bg-primary text-accent;
   }
 
   #root {
