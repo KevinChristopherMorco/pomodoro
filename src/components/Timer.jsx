@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 const Timer = () => {
-  const [type, setType] = useState();
-  const [time, setTime] = useState();
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(25);
   const [action, setAction] = useState(false);
@@ -50,8 +48,8 @@ const Timer = () => {
   }, [action, seconds, minutes]);
 
   return (
-    <div>
-      <ul className="flex justify-around">
+    <div className="h-full flex flex-col gap-y-[20%]">
+      <ul className="w-[100%] my-10 flex justify-around">
         <li id="pomodoro" className="cursor-pointer" onClick={handleTime}>
           Pomodoro
         </li>
@@ -62,12 +60,22 @@ const Timer = () => {
           Short Break
         </li>
       </ul>
-      <h1>
-        {String(minutes).padStart(2, 0)} : {String(seconds).padStart(2, 0)}
-      </h1>
-
-      <button onClick={handleUserAction}>{action ? "Pause" : "Start"}</button>
-      <button>Reset</button>
+      <div className="p-4 flex flex-col items-center gap-y-20">
+        <h1 className="text-4xl font-bold">
+          {String(minutes).padStart(2, 0)} : {String(seconds).padStart(2, 0)}
+        </h1>
+        <div className="flex justify-center gap-x-10">
+          <button
+            className="bg-accent p-4 flex justify-center items-center font-bold text-xl rounded-full"
+            onClick={handleUserAction}
+          >
+            {action ? "Pause" : <ion-icon name="play"></ion-icon>}
+          </button>
+          <button className="p-4 flex justify-center items-center font-bold text-xl border-2 border-accent rounded-full">
+            <ion-icon name="refresh"></ion-icon>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
