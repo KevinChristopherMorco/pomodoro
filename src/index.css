@@ -6,6 +6,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 @layer base {
   html {
     @apply h-full;
@@ -15,7 +16,7 @@
   }
 
   #root {
-    @apply h-full min-h-full flex flex-col;
+    @apply h-full min-h-full flex flex-col relative;
   }
 }
 
