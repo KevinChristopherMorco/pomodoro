@@ -3,34 +3,32 @@ import chick from "../gif/chick.gif";
 import test from "../gif/test.gif";
 import Swal from "sweetalert2";
 
-const Timer = () => {
-  const initialTime = JSON.parse(localStorage.getItem("time")) || {
-    pomodoro: 25,
-    shortBreak: 5,
-    longBreak: 15,
-  };
-
-  const [type, setType] = useState(null);
+const Timer = ({ initialTime }) => {
+  const [type, setType] = useState(localStorage.getItem("type") || "pomodoro");
   const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(initialTime.pomodoro || 25);
+  const [minutes, setMinutes] = useState(() => {
+    if (type === "pomodoro") {
+      return initialTime.pomodoro || 25;
+    }
+    if (type === "longBreak") {
+      return initialTime.longBreak || 15;
+    }
+    if (type === "shortBreak") {
+      return initialTime.shortBreak || 5;
+    }
+  });
   const [action, setAction] = useState(false);
-  const [active, setActive] = useState(false);
-
-  const handleUserAction = () => {
-    action ? setAction(false) : setAction(true);
-  };
-
-  const { pomodoro, longBreak, shortBreak } = JSON.parse(
-    localStorage.getItem("time")
-  );
-
-  useEffect(() => console.log(minutes), [minutes]);
+  const [active, setActive] = useState(null);
 
   const time = {
     pomodoro: { minutes: initialTime.pomodoro || 25, seconds: 0 },
     longBreak: { minutes: initialTime.longBreak || 15, seconds: 0 },
     shortBreak: { minutes: initialTime.shortBreak || 5, seconds: 0 },
     default: { minutes: 25, seconds: 0 },
+  };
+
+  const handleUserAction = () => {
+    action ? setAction(false) : setAction(true);
   };
 
   const handleType = (event) => {
@@ -97,13 +95,29 @@ const Timer = () => {
     }
   }, [action, seconds, minutes]);
 
+  useEffect(() => {
+    localStorage.setItem("type", type);
+  }, [type]);
+
+  useEffect(() => {
+    if (type === "pomodoro") {
+      setMinutes(initialTime.pomodoro);
+    } else if (type === "longBreak") {
+      setMinutes(initialTime.longBreak);
+    } else {
+      setMinutes(initialTime.shortBreak);
+    }
+  }, [initialTime]);
+
   return (
     <div className="h-full flex flex-col">
       <ul className="w-[100%] my-10 flex justify-around font-medium">
         <li
           id="pomodoro"
           className={`cursor-pointer p-2 rounded-lg ${
-            active === "pomodoro" ? "bg-accent text-white" : "bg-transparent"
+            type === "pomodoro"
+              ? "bg-[var(--accent-color)] text-white"
+              : "bg-transparent"
           }`}
           onClick={handleType}
         >
@@ -112,7 +126,9 @@ const Timer = () => {
         <li
           id="longBreak"
           className={`cursor-pointer p-2 rounded-lg ${
-            active === "longBreak" ? "bg-accent text-white" : "bg-transparent"
+            type === "longBreak"
+              ? "bg-[var(--accent-color)] text-white"
+              : "bg-transparent"
           }`}
           onClick={handleType}
         >
@@ -121,7 +137,9 @@ const Timer = () => {
         <li
           id="shortBreak"
           className={`cursor-pointer p-2 rounded-lg ${
-            active === "shortBreak" ? "bg-accent text-white" : "bg-transparent"
+            type === "shortBreak"
+              ? "bg-[var(--accent-color)] text-white"
+              : "bg-transparent"
           }`}
           onClick={handleType}
         >
@@ -154,7 +172,7 @@ const Timer = () => {
         </div>
         <div className="flex justify-center gap-x-10">
           <button
-            className="bg-accent p-4 flex justify-center items-center font-bold text-xl text-white rounded-full"
+            className="bg-[var(--accent-color)] p-4 flex justify-center items-center font-bold text-xl text-[var(--text-accent)] rounded-full"
             onClick={handleUserAction}
           >
             {action ? (
@@ -164,7 +182,7 @@ const Timer = () => {
             )}
           </button>
           <button
-            className="p-4 flex justify-center items-center font-bold text-xl border-2 border-accent rounded-full"
+            className="p-4 flex justify-center items-center font-bold text-xl border-2 border-[var(--secondary-color)] rounded-full"
             onClick={reset}
           >
             <ion-icon name="refresh"></ion-icon>

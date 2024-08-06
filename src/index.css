@@ -8,11 +8,41 @@
 }
 
 @layer base {
+  :root {
+    --primary-color: #f2f3f3;
+    --secondary-color: #aeaeae;
+    --accent-color: #000;
+    --text-color: #000;
+    --text-accent: #fff;
+
+    --primary-twilight: #150e17;
+    --secondary-twilight: #7b757c;
+    --accent-twilight: #861aa7;
+    --text-twilight: #fff;
+    --text-accent-twilight: #fff;
+  }
+
+  .classic {
+    --primary-color: var(--primary-color);
+    --secondary-color: var(--secondary-color);
+    --accent-color: var(--accent-color);
+    --text-color: var(--text-color);
+    --text-accent: var(--text-accent);
+  }
+
+  .twilight {
+    --primary-color: var(--primary-twilight);
+    --secondary-color: var(--secondary-twilight);
+    --accent-color: var(--accent-twilight);
+    --text-color: var(--text-twilight);
+    --text-accent: var(--text-accent-twilight);
+  }
+
   html {
     @apply h-full;
   }
   body {
-    @apply h-full min-h-full bg-primary text-accent;
+    @apply h-full min-h-full bg-[var(--primary-color)] text-[var(--text-color)];
   }
 
   #root {
