@@ -3,11 +3,15 @@ import "./App.css";
 
 import Timer from "./components/Timer";
 import Header from "./components/Header";
-import Modal from "./components/Modal/Modal";
+import SettingModal from "./components/Modal/SettingModal";
+import TasksModal from "./components/Modal/TasksModal";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [modal, setModal] = useState(false);
+  document.body.classList.add("twilight");
+  const [settings, setSettings] = useState(false);
+  const [tasksModal, setTasksModal] = useState(false);
+
   const [initialTime, setInitialTime] = useState(
     JSON.parse(localStorage.getItem("time")) || {
       pomodoro: 25,
@@ -18,14 +22,15 @@ function App() {
 
   return (
     <>
-      <Header setModal={setModal} />
+      <Header setSettings={setSettings} setTasksModal={setTasksModal} />
       <Timer initialTime={initialTime} />
-      <Modal
-        modal={modal}
-        setModal={setModal}
+      <SettingModal
+        settings={settings}
+        setSettings={setSettings}
         initialTime={initialTime}
         setInitialTime={setInitialTime}
       />
+      <TasksModal tasksModal={tasksModal} setTasksModal={setTasksModal} />
     </>
   );
 }

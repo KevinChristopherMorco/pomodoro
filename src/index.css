@@ -10,13 +10,13 @@
 @layer base {
   :root {
     --primary-color: #f2f3f3;
-    --secondary-color: #aeaeae;
+    --secondary-color: #e2e2e2;
     --accent-color: #000;
     --text-color: #000;
     --text-accent: #fff;
 
     --primary-twilight: #150e17;
-    --secondary-twilight: #7b757c;
+    --secondary-twilight: #959296;
     --accent-twilight: #861aa7;
     --text-twilight: #fff;
     --text-accent-twilight: #fff;
