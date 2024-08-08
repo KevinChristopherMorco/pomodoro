@@ -30,7 +30,9 @@ const TasksModalView = ({ setStorage, storage, currentView }) => {
       >
         <div
           className={`${
-            currentView === "viewTask" ? "flex flex-col gap-y-4" : "hidden"
+            currentView === "viewTask"
+              ? "h-[70vh] overflow-scroll flex flex-col gap-y-4"
+              : "hidden"
           }`}
         >
           <ViewNote storage={storage} setStorage={setStorage} />

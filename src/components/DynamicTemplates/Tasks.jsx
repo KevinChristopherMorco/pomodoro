@@ -35,7 +35,7 @@ const Tasks = ({ id, title, note, totalPomodoro, storage, setStorage }) => {
   }, [storage]);
   return (
     <div
-      className="p-3 flex flex-col gap-y-4 border border-[var(--secondary-color)] bg-[var(--primary-color)] rounded-lg"
+      className="p-3 flex flex-col gap-y-4 shadow-sm shadow-[var(--secondary-color)] border border-[var(--secondary-color)] bg-[var(--primary-color)] rounded-lg"
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >

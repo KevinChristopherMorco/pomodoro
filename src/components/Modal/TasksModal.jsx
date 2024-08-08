@@ -25,7 +25,7 @@ const TasksModal = ({ setStorage, storage, tasksModal, setTasksModal }) => {
         }`}
       >
         <div className="w-[95%] my-5 mx-auto px-2 py-4 flex flex-col gap-y-1 bg-[var(--primary-color)] rounded-lg">
-          <div className="pb-4 flex justify-between items-center border-b border-[var(--accent-color)] text-2xl">
+          <div className="pb-4 flex justify-between items-center border-b border-[var(--secondary-color)] text-2xl">
             <div>
               <h6 className="text-lg font-bold">Manage Tasks</h6>
             </div>

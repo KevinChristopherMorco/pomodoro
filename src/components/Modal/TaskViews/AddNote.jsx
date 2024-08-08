@@ -42,7 +42,7 @@ const AddNote = () => {
         <input
           type="text"
           name="title"
-          className="w-full px-4 py-3 text-sm bg-transparent border border-[var(--secondary-color)] rounded"
+          className="w-full px-4 py-3 text-sm shadow-sm shadow-[var(--secondary-color)] bg-transparent border border-[var(--secondary-color)] rounded"
           placeholder="Do you have any tasks in mind?"
           onChange={handleInput}
         />
@@ -53,7 +53,7 @@ const AddNote = () => {
           type="number"
           name="totalPomodoro"
           id=""
-          className="w-[40%] px-4 py-2 border border-[var(--secondary-color)] text-sm bg-transparent rounded"
+          className="w-[40%] px-4 py-2 shadow-sm shadow-[var(--secondary-color)] border border-[var(--secondary-color)] text-sm bg-transparent rounded"
           onChange={handleInput}
           value={tasks.totalPomodoro}
         />
@@ -76,7 +76,7 @@ const AddNote = () => {
           />
         </div>
       </div>
-      <div className="pt-4 flex justify-end items-center border-t border-[var(--accent-color)]">
+      <div className="pt-4 flex justify-end items-center border-t border-[var(--secondary-color)]">
         <button
           className="w-fit px-4 py-2 bg-[var(--accent-color)] text-white rounded-lg"
           onClick={handleSubmit}
