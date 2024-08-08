@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 const AddNote = () => {
-  const [viewTask, setViewTask] = useState(false);
   const [viewNotes, setViewNotes] = useState(false);
   const [tasks, setTasks] = useState({
     id: "",
@@ -37,21 +36,26 @@ const AddNote = () => {
   };
   return (
     <>
-      <input
-        type="text"
-        name="title"
-        className="w-full p-4 text-sm bg-transparent border border-[var(--accent-color)] rounded"
-        placeholder="Do you have any tasks in mind?"
-        onChange={handleInput}
-      />
       <div className="flex flex-col gap-y-2">
-        <h6 className="font-medium">No. of Pomodoros</h6>
+        <h6 className="font-medium">Task Name:</h6>
+
+        <input
+          type="text"
+          name="title"
+          className="w-full px-4 py-3 text-sm bg-transparent border border-[var(--secondary-color)] rounded"
+          placeholder="Do you have any tasks in mind?"
+          onChange={handleInput}
+        />
+      </div>
+      <div className="flex flex-col gap-y-2">
+        <h6 className="font-medium">No. of Pomodoros:</h6>
         <input
           type="number"
           name="totalPomodoro"
           id=""
-          className="w-[60%] py-2 px-4 p-1 border border-[var(--accent-color)] text-xl bg-transparent rounded"
+          className="w-[40%] px-4 py-2 border border-[var(--secondary-color)] text-sm bg-transparent rounded"
           onChange={handleInput}
+          value={tasks.totalPomodoro}
         />
       </div>
       <div
@@ -72,22 +76,13 @@ const AddNote = () => {
           />
         </div>
       </div>
-      <div className="pt-4 flex justify-between items-center border-t border-[var(--accent-color)]">
-        <div
-          className="w-fit flex items-center gap-x-2 font-medium cursor-pointer"
-          onClick={() => setViewTask(!viewTask)}
+      <div className="pt-4 flex justify-end items-center border-t border-[var(--accent-color)]">
+        <button
+          className="w-fit px-4 py-2 bg-[var(--accent-color)] text-white rounded-lg"
+          onClick={handleSubmit}
         >
-          <ion-icon name="eye-outline"></ion-icon>
-          <p>View tasks</p>
-        </div>
-        <div>
-          <button
-            className="w-fit px-4 py-2 self-end bg-[var(--accent-color)] text-white rounded-lg"
-            onClick={handleSubmit}
-          >
-            Save
-          </button>
-        </div>
+          Save
+        </button>
       </div>
     </>
   );

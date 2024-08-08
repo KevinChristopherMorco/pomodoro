@@ -2,7 +2,7 @@ import React from "react";
 import AddNote from "./TaskViews/AddNote";
 import ViewNote from "./TaskViews/ViewNote";
 
-const TasksModalView = ({ currentView }) => {
+const TasksModalView = ({ setStorage, storage, currentView }) => {
   return (
     <>
       <div
@@ -33,7 +33,7 @@ const TasksModalView = ({ currentView }) => {
             currentView === "viewTask" ? "flex flex-col gap-y-4" : "hidden"
           }`}
         >
-          <ViewNote />
+          <ViewNote storage={storage} setStorage={setStorage} />
         </div>
       </div>
     </>

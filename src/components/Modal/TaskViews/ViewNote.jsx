@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import Tasks from "../../DynamicTemplates/Tasks";
 
-const ViewNote = () => {
-  const [storage, setStorage] = useState(
-    JSON.parse(localStorage.getItem("tasks")) || []
-  );
+const ViewNote = ({ storage, setStorage }) => {
   return (
     <>
-      {storage.map(({ title, note, totalPomodoro }) => {
+      {storage.map(({ id, title, note, totalPomodoro }) => {
         return (
-          <Tasks title={title} note={note} totalPomodoro={totalPomodoro} />
+          <Tasks
+            key={id}
+            id={id}
+            title={title}
+            note={note}
+            totalPomodoro={totalPomodoro}
+            storage={storage}
+            setStorage={setStorage}
+          />
         );
       })}
     </>

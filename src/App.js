@@ -12,6 +12,10 @@ function App() {
   const [settings, setSettings] = useState(false);
   const [tasksModal, setTasksModal] = useState(false);
 
+  const [storage, setStorage] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
+
   const [initialTime, setInitialTime] = useState(
     JSON.parse(localStorage.getItem("time")) || {
       pomodoro: 25,
@@ -30,7 +34,12 @@ function App() {
         initialTime={initialTime}
         setInitialTime={setInitialTime}
       />
-      <TasksModal tasksModal={tasksModal} setTasksModal={setTasksModal} />
+      <TasksModal
+        tasksModal={tasksModal}
+        setTasksModal={setTasksModal}
+        storage={storage}
+        setStorage={setStorage}
+      />
     </>
   );
 }
