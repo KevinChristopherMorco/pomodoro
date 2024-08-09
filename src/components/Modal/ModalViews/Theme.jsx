@@ -1,18 +1,22 @@
 import React from "react";
 
-const Theme = ({ view }) => {
+const Theme = ({ currentView }) => {
   return (
     <div
       className={`transition-opacity delay-75 ${
-        view === "theme" || view === null ? "opacity-100" : "opacity-0"
+        currentView === "theme" || currentView === null
+          ? "h-full opacity-100"
+          : "opacity-0"
       }`}
     >
       <form
         className={`${
-          view === "theme" || view === null ? "flex flex-col gap-y-8" : "hidden"
+          currentView === "theme" || currentView === null
+            ? "h-full flex flex-wrap content-between"
+            : "hidden"
         }`}
       >
-        <div className="flex flex-col gap-y-2">
+        <div className="w-full flex flex-col gap-y-2">
           <h6 className="font-medium">Select Theme</h6>
           <select
             name=""
@@ -23,11 +27,13 @@ const Theme = ({ view }) => {
             <option value="">Twilight</option>
           </select>
         </div>
-        <input
-          type="submit"
-          className="w-fit px-4 py-2 self-end bg-[var(--accent-color)] text-white rounded-lg"
-          value="Save"
-        ></input>
+        <div className="w-full pt-4 mt-4 flex justify-end border-t border-[var(--secondary-color)]">
+          <input
+            type="submit"
+            className="w-fit px-4 py-2 self-end bg-[var(--accent-color)] text-white rounded-lg cursor-pointer"
+            value="Save"
+          ></input>
+        </div>
       </form>
     </div>
   );

@@ -1,52 +1,42 @@
 import React, { useState } from "react";
 import ModalView from "./SettingModalView";
 import ModalList from "./SettingModalList";
+import useListActive from "../../hooks/useListActive";
 
-const Modal = ({
-  settings,
-  setSettings,
-  setMinutes,
-  initialTime,
-  setInitialTime,
-}) => {
-  const [view, setView] = useState(null);
+const Modal = ({ settings, setModalType, setMinutes, modalType }) => {
+  const { currentView, setActive } = useListActive();
 
-  const handleView = (event) => {
-    const { id } = event.target;
-    setView(id);
-  };
   return (
     <div
       className={`transition ${
-        settings ? "h-full w-full absolute opacity-100" : "opacity-0"
+        modalType === "settings-modal"
+          ? "h-full w-full absolute opacity-100"
+          : "opacity-0"
       }`}
     >
       <div
-        className={`h-full w-full bg-black bg-opacity-50  ${
-          settings ? "flex items-center" : "hidden"
+        className={`bg-black bg-opacity-50  ${
+          modalType === "settings-modal"
+            ? "h-full w-full my-5 flex items-start"
+            : "hidden"
         }`}
       >
         <div className="w-[95%] mx-auto px-2 py-4 flex flex-col gap-y-10 bg-[var(--primary-color)] rounded-lg">
-          <div className="px-2 flex justify-between items-center">
+          <div className="px-2 pb-4 flex justify-between items-center border-b border-[var(--secondary-color)]">
             <h6 className="text-lg font-bold">Customize Settings</h6>
             <div
               className="w-fit py-2 flex items-center text-2xl cursor-pointer"
-              onClick={() => setSettings(false)}
+              onClick={() => setModalType(null)}
             >
               <ion-icon name="close-circle-outline"></ion-icon>
             </div>
           </div>
-          <div className="flex justify-around">
-            <div className="basis-[30%]">
-              <ModalList handleView={handleView} />
+          <div className="flex justify-between">
+            <div className="basis-[20%]">
+              <ModalList currentView={currentView} setActive={setActive} />
             </div>
-            <div className="basis-[60%]">
-              <ModalView
-                view={view}
-                setMinutes={setMinutes}
-                initialTime={initialTime}
-                setInitialTime={setInitialTime}
-              />
+            <div className="basis-[70%]">
+              <ModalView currentView={currentView} setMinutes={setMinutes} />
             </div>
           </div>
         </div>

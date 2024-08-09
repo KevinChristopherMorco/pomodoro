@@ -2,15 +2,11 @@ import React from "react";
 import Theme from "./ModalViews/Theme";
 import Time from "./ModalViews/Time";
 
-const ModalView = ({ view, initialTime, setInitialTime }) => {
+const ModalView = ({ currentView }) => {
   return (
     <>
-      <Theme view={view} />
-      <Time
-        view={view}
-        initialTime={initialTime}
-        setInitialTime={setInitialTime}
-      />
+      <Theme currentView={currentView} />
+      <Time currentView={currentView} />
     </>
   );
 };

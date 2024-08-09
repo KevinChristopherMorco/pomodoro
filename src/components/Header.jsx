@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = ({ setSettings, setTasksModal }) => {
+const Header = ({ setToggle }) => {
   return (
     <nav className="px-4 py-6 flex justify-between">
       <div className="basis-[40%]">
@@ -9,14 +9,16 @@ const Header = ({ setSettings, setTasksModal }) => {
       <div className="flex justify-between items-center text-xl basis-[35%]">
         <div
           className="flex gap-x-1 items-center cursor-pointer"
-          onClick={() => setTasksModal(true)}
+          id="tasks-modal"
+          onClick={setToggle}
         >
           <ion-icon name="clipboard-outline"></ion-icon>
           <p className="text-sm font-medium">My Tasks</p>
         </div>
         <div
           className="flex items-center cursor-pointer"
-          onClick={() => setSettings(true)}
+          id="settings-modal"
+          onClick={setToggle}
         >
           <ion-icon name="settings-outline"></ion-icon>
         </div>

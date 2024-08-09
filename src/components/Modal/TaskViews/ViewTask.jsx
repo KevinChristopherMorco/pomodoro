@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Tasks from "../../DynamicTemplates/Tasks";
 
-const ViewNote = ({ storage, setStorage }) => {
+import useLocalStorage from "../../../hooks/useLocalStorage";
+
+const ViewNote = () => {
+  const { storage } = useLocalStorage();
   return (
     <>
       {storage.map(({ id, title, note, totalPomodoro }) => {
@@ -12,8 +15,6 @@ const ViewNote = ({ storage, setStorage }) => {
             title={title}
             note={note}
             totalPomodoro={totalPomodoro}
-            storage={storage}
-            setStorage={setStorage}
           />
         );
       })}

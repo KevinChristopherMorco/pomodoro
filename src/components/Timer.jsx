@@ -3,7 +3,11 @@ import chick from "../gif/chick.gif";
 import test from "../gif/test.gif";
 import Swal from "sweetalert2";
 
-const Timer = ({ initialTime }) => {
+import useInitialTime from "../hooks/useInitialTime";
+
+const Timer = () => {
+  const { initialTime } = useInitialTime();
+
   const [type, setType] = useState(localStorage.getItem("type") || "pomodoro");
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(() => {

@@ -1,41 +1,42 @@
 import React from "react";
-import AddNote from "./TaskViews/AddNote";
-import ViewNote from "./TaskViews/ViewNote";
+import AddTask from "./TaskViews/AddTask";
+import ViewTask from "./TaskViews/ViewTask";
+import useListActive from "../../hooks/useListActive";
 
-const TasksModalView = ({ setStorage, storage, currentView }) => {
+const TasksModalView = ({ currentView }) => {
   return (
     <>
       <div
         className={`transition-opacity ${
           currentView === "addTask" || currentView === null
-            ? "opacity-100"
+            ? "h-fit opacity-100"
             : "opacity-0"
         }`}
       >
         <div
           className={`${
             currentView === "addTask" || currentView === null
-              ? "flex flex-col gap-y-4"
+              ? "h-full flex flex-wrap content-between gap-y-5"
               : "hidden"
           }`}
         >
-          <AddNote />
+          <AddTask />
         </div>
       </div>
 
       <div
         className={`transition-opacity ${
-          currentView === "viewTask" ? "opacity-100" : "opacity-0"
+          currentView === "viewTask" ? "h-[25rem] opacity-100" : "opacity-0"
         }`}
       >
         <div
           className={`${
             currentView === "viewTask"
-              ? "h-[70vh] overflow-scroll flex flex-col gap-y-4"
+              ? "h-full overflow-scroll flex flex-wrap content-between gap-y-5"
               : "hidden"
           }`}
         >
-          <ViewNote storage={storage} setStorage={setStorage} />
+          <ViewTask />
         </div>
       </div>
     </>

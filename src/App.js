@@ -5,6 +5,8 @@ import Timer from "./components/Timer";
 import Header from "./components/Header";
 import SettingModal from "./components/Modal/SettingModal";
 import TasksModal from "./components/Modal/TasksModal";
+
+import useToggleModal from "./hooks/useToggleModal";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -12,34 +14,18 @@ function App() {
   const [settings, setSettings] = useState(false);
   const [tasksModal, setTasksModal] = useState(false);
 
-  const [storage, setStorage] = useState(
-    JSON.parse(localStorage.getItem("tasks")) || []
-  );
-
-  const [initialTime, setInitialTime] = useState(
-    JSON.parse(localStorage.getItem("time")) || {
-      pomodoro: 25,
-      shortBreak: 5,
-      longBreak: 15,
-    }
-  );
+  const { modalType, setToggle, setModalType } = useToggleModal();
 
   return (
     <>
-      <Header setSettings={setSettings} setTasksModal={setTasksModal} />
-      <Timer initialTime={initialTime} />
+      <Header setToggle={setToggle} />
+      <Timer />
       <SettingModal
         settings={settings}
-        setSettings={setSettings}
-        initialTime={initialTime}
-        setInitialTime={setInitialTime}
+        setModalType={setModalType}
+        modalType={modalType}
       />
-      <TasksModal
-        tasksModal={tasksModal}
-        setTasksModal={setTasksModal}
-        storage={storage}
-        setStorage={setStorage}
-      />
+      <TasksModal setModalType={setModalType} modalType={modalType} />
     </>
   );
 }

@@ -1,46 +1,26 @@
 import React, { useState } from "react";
+import useEditTask from "../../hooks/useEditTask";
 import { useEffect } from "react";
 
-const Tasks = ({ id, title, note, totalPomodoro, storage, setStorage }) => {
+const Tasks = ({ id, title, note, totalPomodoro }) => {
   const [hover, setHover] = useState(false);
-  const [edit, setEdit] = useState(false);
-  const handleDelete = () => {
-    setStorage(storage.filter((x) => x.id !== id));
-  };
+  const initialTask = { id, title, note, totalPomodoro };
 
-  const [tasks, setTasks] = useState({
-    title: title,
-    note: note,
-  });
+  const { tasks, edit, setEdit, handleInput, handleSubmit, handleDelete } =
+    useEditTask(initialTask);
 
-  const handleInput = (event) => {
-    const { name, value } = event.target;
-    setTasks((prev) => {
-      return { ...prev, [name]: value };
-    });
-  };
-
-  const handleSubmit = () => {
-    const { title, note } = tasks;
-    setStorage(
-      storage.map((task) => {
-        return task.id === id ? { ...task, title: title, note: note } : task;
-      })
-    );
-    setEdit(false);
-  };
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(storage));
-  }, [storage]);
   return (
     <div
-      className="p-3 flex flex-col gap-y-4 shadow-sm shadow-[var(--secondary-color)] border border-[var(--secondary-color)] bg-[var(--primary-color)] rounded-lg"
+      className="w-full p-3 flex flex-col gap-y-4 shadow-sm shadow-[var(--secondary-color)] border border-[var(--secondary-color)] bg-[var(--primary-color)] rounded-lg cursor-pointer"
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
       <div className="flex justify-between">
-        <div className="flex flex-col gap-y-4 basis-[40%]">
+        <div
+          className={`flex flex-col gap-y-4 ${
+            edit ? "basis-[40%]" : "basis-[70%]"
+          } `}
+        >
           {edit ? (
             <input
               className="w-full px-4 py-2 border border-[var(--secondary-color)] text-sm bg-transparent rounded"
