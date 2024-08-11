@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const TasksModalList = ({ currentView, setActive }) => {
+const TasksModalList = ({ currentView, setCurrentView }) => {
   return (
     <ul className="flex flex-col gap-y-4 font-medium">
       <li
@@ -10,7 +10,7 @@ const TasksModalList = ({ currentView, setActive }) => {
             : "bg-transparent"
         }`}
         id="addTask"
-        onClick={setActive}
+        onClick={() => setCurrentView("addTask")}
       >
         Add Task
       </li>
@@ -21,7 +21,7 @@ const TasksModalList = ({ currentView, setActive }) => {
             : "bg-transparent"
         }`}
         id="viewTask"
-        onClick={setActive}
+        onClick={() => setCurrentView("viewTask")}
       >
         View Task
       </li>

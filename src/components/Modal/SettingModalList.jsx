@@ -1,6 +1,6 @@
 import React from "react";
 
-const ModalList = ({ currentView, setActive }) => {
+const ModalList = ({ currentView, setCurrentView }) => {
   return (
     <>
       <ul className="flex flex-col gap-y-4 text-sm font-medium">
@@ -11,7 +11,7 @@ const ModalList = ({ currentView, setActive }) => {
               : "bg-transparent"
           }`}
           id="theme"
-          onClick={setActive}
+          onClick={() => setCurrentView("theme")}
         >
           Theme
         </li>
@@ -22,7 +22,7 @@ const ModalList = ({ currentView, setActive }) => {
               : "bg-transparent"
           }`}
           id="timer"
-          onClick={setActive}
+          onClick={() => setCurrentView("timer")}
         >
           Timer
         </li>
@@ -33,7 +33,7 @@ const ModalList = ({ currentView, setActive }) => {
               : "bg-transparent"
           }`}
           id="sound"
-          onClick={setActive}
+          onClick={() => setCurrentView("sound")}
         >
           Sounds
         </li>

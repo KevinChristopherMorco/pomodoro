@@ -21,7 +21,7 @@ const Theme = ({ currentView }) => {
           <select
             name=""
             id=""
-            className="w-full p-1 border border-[var(--secondary-color)] bg-transparent"
+            className="w-full p-1 shadow-sm shadow-[var(--secondary-color)] border border-[var(--secondary-color)] bg-transparent"
           >
             <option value="">Classic</option>
             <option value="">Twilight</option>

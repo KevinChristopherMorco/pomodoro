@@ -7,24 +7,26 @@ import SettingModal from "./components/Modal/SettingModal";
 import TasksModal from "./components/Modal/TasksModal";
 
 import useToggleModal from "./hooks/useToggleModal";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { TimerProvider } from "./hooks/TimeProvider";
 
 function App() {
-  document.body.classList.add("twilight");
+  // document.body.classList.add("twilight");
   const [settings, setSettings] = useState(false);
-  const [tasksModal, setTasksModal] = useState(false);
-
   const { modalType, setToggle, setModalType } = useToggleModal();
 
   return (
     <>
       <Header setToggle={setToggle} />
-      <Timer />
-      <SettingModal
-        settings={settings}
-        setModalType={setModalType}
-        modalType={modalType}
-      />
+      <TimerProvider>
+        <Timer />
+        <SettingModal
+          settings={settings}
+          setModalType={setModalType}
+          modalType={modalType}
+        />
+      </TimerProvider>
+
       <TasksModal setModalType={setModalType} modalType={modalType} />
     </>
   );

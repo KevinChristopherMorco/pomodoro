@@ -51,9 +51,14 @@ const Tasks = ({ id, title, note, totalPomodoro }) => {
       </div>
       <div
         className={`transition ${
-          hover ? "w-fit opacity-100 self-end" : "opacity-0 invisible"
+          hover
+            ? "w-full opacity-100 flex justify-between items-center"
+            : "opacity-0 invisible"
         }`}
       >
+        <div className="flex items-center text-[var(--secondary-color)]">
+          <ion-icon name="alarm-outline"></ion-icon>
+        </div>
         <div
           className={` text-lg text-[var(--secondary-color)] ${
             hover ? "flex gap-x-4 items-center" : "hidden"

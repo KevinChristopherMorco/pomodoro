@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext, useMemo } from "react";
 import { v4 as uuid } from "uuid";
 import useLocalStorage from "./useLocalStorage";
 
+import { StorageContext } from "./LocalStorageProvider";
+
 const useAddTask = () => {
-  const { storage, setStorage } = useLocalStorage();
+  const getStorageContext = useContext(StorageContext);
+  const { setStorage } = getStorageContext;
 
   const [tasks, setTasks] = useState({
     id: "",
@@ -22,10 +25,6 @@ const useAddTask = () => {
       return [...prev, submitTask];
     });
   };
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(storage));
-  }, [storage]);
 
   const handleInput = (event) => {
     const { name, value } = event.target;

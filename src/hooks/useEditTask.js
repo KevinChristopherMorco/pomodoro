@@ -1,12 +1,10 @@
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useContext } from "react";
+import { StorageContext } from "./LocalStorageProvider";
 const useEditTask = (initialTask) => {
+  const getStorageContext = useContext(StorageContext);
+  const { storage, setStorage } = getStorageContext;
   const [edit, setEdit] = useState(false);
   const [tasks, setTasks] = useState(initialTask);
-
-  const [storage, setStorage] = useState(
-    JSON.parse(localStorage.getItem("tasks")) || []
-  );
 
   const handleDelete = () => {
     setStorage(storage.filter((x) => x.id !== initialTask.id));
@@ -30,10 +28,6 @@ const useEditTask = (initialTask) => {
     );
     setEdit(false);
   };
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(storage));
-  }, [storage]);
 
   return {
     tasks,

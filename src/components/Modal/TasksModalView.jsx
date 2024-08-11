@@ -3,42 +3,45 @@ import AddTask from "./TaskViews/AddTask";
 import ViewTask from "./TaskViews/ViewTask";
 import useListActive from "../../hooks/useListActive";
 
+import { StorageContextProvider } from "../../hooks/LocalStorageProvider";
+
 const TasksModalView = ({ currentView }) => {
   return (
     <>
-      <div
-        className={`transition-opacity ${
-          currentView === "addTask" || currentView === null
-            ? "h-fit opacity-100"
-            : "opacity-0"
-        }`}
-      >
+      <StorageContextProvider>
         <div
-          className={`${
+          className={`transition-opacity ${
             currentView === "addTask" || currentView === null
-              ? "h-full flex flex-wrap content-between gap-y-5"
-              : "hidden"
+              ? "h-fit opacity-100"
+              : "opacity-0"
           }`}
         >
-          <AddTask />
+          <div
+            className={`${
+              currentView === "addTask" || currentView === null
+                ? "h-full flex flex-wrap content-between gap-y-5"
+                : "hidden"
+            }`}
+          >
+            <AddTask />
+          </div>
         </div>
-      </div>
-
-      <div
-        className={`transition-opacity ${
-          currentView === "viewTask" ? "h-[25rem] opacity-100" : "opacity-0"
-        }`}
-      >
         <div
-          className={`${
-            currentView === "viewTask"
-              ? "h-full overflow-scroll flex flex-wrap content-between gap-y-5"
-              : "hidden"
+          className={`transition-opacity ${
+            currentView === "viewTask" ? "h-[25rem] opacity-100" : "opacity-0"
           }`}
         >
-          <ViewTask />
+          <div
+            className={`${
+              currentView === "viewTask"
+                ? "h-full overflow-scroll flex flex-wrap content-start gap-y-5"
+                : "hidden"
+            }`}
+          >
+            <ViewTask />
+          </div>
         </div>
-      </div>
+      </StorageContextProvider>
     </>
   );
 };

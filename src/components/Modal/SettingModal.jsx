@@ -3,8 +3,8 @@ import ModalView from "./SettingModalView";
 import ModalList from "./SettingModalList";
 import useListActive from "../../hooks/useListActive";
 
-const Modal = ({ settings, setModalType, setMinutes, modalType }) => {
-  const { currentView, setActive } = useListActive();
+const Modal = ({ setModalType, setMinutes, modalType }) => {
+  const { currentView, setCurrentView } = useListActive();
 
   return (
     <div
@@ -17,11 +17,11 @@ const Modal = ({ settings, setModalType, setMinutes, modalType }) => {
       <div
         className={`bg-black bg-opacity-50  ${
           modalType === "settings-modal"
-            ? "h-full w-full my-5 flex items-start"
+            ? "h-full w-full flex items-start"
             : "hidden"
         }`}
       >
-        <div className="w-[95%] mx-auto px-2 py-4 flex flex-col gap-y-10 bg-[var(--primary-color)] rounded-lg">
+        <div className="w-[95%] mx-auto px-2 py-4 my-5 flex flex-col gap-y-10 bg-[var(--primary-color)] rounded-lg">
           <div className="px-2 pb-4 flex justify-between items-center border-b border-[var(--secondary-color)]">
             <h6 className="text-lg font-bold">Customize Settings</h6>
             <div
@@ -33,7 +33,10 @@ const Modal = ({ settings, setModalType, setMinutes, modalType }) => {
           </div>
           <div className="flex justify-between">
             <div className="basis-[20%]">
-              <ModalList currentView={currentView} setActive={setActive} />
+              <ModalList
+                currentView={currentView}
+                setCurrentView={setCurrentView}
+              />
             </div>
             <div className="basis-[70%]">
               <ModalView currentView={currentView} setMinutes={setMinutes} />

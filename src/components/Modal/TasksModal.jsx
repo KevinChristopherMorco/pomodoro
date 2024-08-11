@@ -7,8 +7,8 @@ import TasksModalView from "./TasksModalView";
 
 import useListActive from "../../hooks/useListActive";
 
-const TasksModal = ({ setStorage, storage, setModalType, modalType }) => {
-  const { currentView, setActive } = useListActive();
+const TasksModal = ({ setModalType, modalType }) => {
+  const { currentView, setCurrentView } = useListActive();
   return (
     <div
       className={`transition ${
@@ -33,7 +33,10 @@ const TasksModal = ({ setStorage, storage, setModalType, modalType }) => {
           </div>
           <div className="py-4 flex justify-between gap-y-2">
             <div className="basis-[25%]">
-              <TasksModalList currentView={currentView} setActive={setActive} />
+              <TasksModalList
+                currentView={currentView}
+                setCurrentView={setCurrentView}
+              />
             </div>
             <div className="basis-[70%]">
               <TasksModalView currentView={currentView} />

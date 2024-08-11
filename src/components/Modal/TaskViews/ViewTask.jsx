@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Tasks from "../../DynamicTemplates/Tasks";
 
 import useLocalStorage from "../../../hooks/useLocalStorage";
+import { StorageContext } from "../../../hooks/LocalStorageProvider";
 
-const ViewNote = () => {
-  const { storage } = useLocalStorage();
+const ViewTask = () => {
+  // const { storage } = useLocalStorage();
+  const getStorageContext = useContext(StorageContext);
+  const { storage } = getStorageContext;
+
   return (
     <>
       {storage.map(({ id, title, note, totalPomodoro }) => {
@@ -22,4 +26,4 @@ const ViewNote = () => {
   );
 };
 
-export default ViewNote;
+export default ViewTask;
