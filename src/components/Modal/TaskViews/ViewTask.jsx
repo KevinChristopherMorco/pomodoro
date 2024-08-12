@@ -11,16 +11,9 @@ const ViewTask = () => {
 
   return (
     <>
-      {storage.map(({ id, title, note, totalPomodoro }) => {
-        return (
-          <Tasks
-            key={id}
-            id={id}
-            title={title}
-            note={note}
-            totalPomodoro={totalPomodoro}
-          />
-        );
+      {storage.map((initialTask) => {
+        const { id } = initialTask;
+        return <Tasks key={id} initialTask={initialTask} />;
       })}
     </>
   );

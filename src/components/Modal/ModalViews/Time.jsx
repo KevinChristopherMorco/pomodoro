@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
-import useInitialTime from "../../../hooks/useInitialTime";
 import { TimerContext } from "../../../hooks/TimeProvider";
+import useEditTimer from "../../../hooks/crud/timer/useEditTimer";
 
 const Time = ({ currentView }) => {
   const getTimeContext = useContext(TimerContext);
-  const { setInitialTime, populateTimerValue } = getTimeContext;
+  const { populateTimerValue } = getTimeContext;
+  const { handleInputChange, handleTimerSubmit } = useEditTimer();
   const {
     pomodoroHours,
     pomodoroMinutes,
@@ -16,48 +17,6 @@ const Time = ({ currentView }) => {
     shortBreakMinutes,
     shortBreakSeconds,
   } = populateTimerValue();
-
-  //State for user inputs
-  const [values, setValue] = useState({
-    pomodoro: {
-      hours: pomodoroHours,
-      minutes: pomodoroMinutes,
-      seconds: pomodoroSeconds,
-    },
-    shortBreak: {
-      hours: longBreakHours,
-      minutes: longBreakMinutes,
-      seconds: longBreakSeconds,
-    },
-    longBreak: {
-      hours: shortBreakHours,
-      minutes: shortBreakMinutes,
-      seconds: shortBreakSeconds,
-    },
-  });
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setInitialTime(() => ({ ...values }));
-    localStorage.setItem("time", JSON.stringify(values));
-  };
-
-  const onChange = (event) => {
-    const { name, value } = event.target;
-    const { type } = event.target.dataset;
-    setValue((prev) => {
-      const { hours, minutes, seconds } = prev[type];
-      return {
-        ...prev,
-        [type]: {
-          hours: hours,
-          minutes: minutes,
-          seconds: seconds,
-          [name]: Number(value),
-        },
-      };
-    });
-  };
 
   return (
     <div
@@ -71,7 +30,7 @@ const Time = ({ currentView }) => {
             ? "min-h-[23rem] flex flex-wrap content-between"
             : "hidden"
         }`}
-        onSubmit={handleSubmit}
+        onSubmit={handleTimerSubmit}
       >
         <div className="w-full flex flex-col gap-y-1">
           <label htmlFor="pomodoro" className="font-medium">
@@ -86,7 +45,7 @@ const Time = ({ currentView }) => {
                 data-type="pomodoro"
                 min={0}
                 placeholder={pomodoroHours}
-                onChange={onChange}
+                onChange={handleInputChange}
               />
               <p>hours</p>
             </div>
@@ -99,7 +58,7 @@ const Time = ({ currentView }) => {
                 max={59}
                 min={0}
                 placeholder={pomodoroMinutes}
-                onChange={onChange}
+                onChange={handleInputChange}
               />
               <p>minutes</p>
             </div>
@@ -112,7 +71,7 @@ const Time = ({ currentView }) => {
                 max={59}
                 min={0}
                 placeholder={pomodoroSeconds}
-                onChange={onChange}
+                onChange={handleInputChange}
               />
               <p>seconds</p>
             </div>
@@ -131,7 +90,7 @@ const Time = ({ currentView }) => {
                 data-type="longBreak"
                 min={0}
                 placeholder={longBreakHours}
-                onChange={onChange}
+                onChange={handleInputChange}
               />
               <p>hours</p>
             </div>
@@ -144,7 +103,7 @@ const Time = ({ currentView }) => {
                 max={59}
                 min={0}
                 placeholder={longBreakMinutes}
-                onChange={onChange}
+                onChange={handleInputChange}
               />
               <p>minutes</p>
             </div>
@@ -157,7 +116,7 @@ const Time = ({ currentView }) => {
                 min={0}
                 data-type="longBreak"
                 placeholder={longBreakSeconds}
-                onChange={onChange}
+                onChange={handleInputChange}
               />
               <p>seconds</p>
             </div>
@@ -176,7 +135,7 @@ const Time = ({ currentView }) => {
                 data-type="shortBreak"
                 min={0}
                 placeholder={shortBreakHours}
-                onChange={onChange}
+                onChange={handleInputChange}
               />
               <p>hours</p>
             </div>
@@ -189,7 +148,7 @@ const Time = ({ currentView }) => {
                 max={59}
                 min={0}
                 placeholder={shortBreakMinutes}
-                onChange={onChange}
+                onChange={handleInputChange}
               />
               <p>minutes</p>
             </div>
@@ -202,7 +161,7 @@ const Time = ({ currentView }) => {
                 max={59}
                 min={0}
                 placeholder={shortBreakSeconds}
-                onChange={onChange}
+                onChange={handleInputChange}
               />
               <p>seconds</p>
             </div>

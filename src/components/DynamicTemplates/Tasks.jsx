@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import useEditTask from "../../hooks/useEditTask";
-import { useEffect } from "react";
+import useEditTask from "../../hooks/crud/tasks/useEditTask";
+import useDeleteTask from "../../hooks/crud/tasks/useDeleteTask";
 
-const Tasks = ({ id, title, note, totalPomodoro }) => {
+const Tasks = ({ initialTask }) => {
   const [hover, setHover] = useState(false);
-  const initialTask = { id, title, note, totalPomodoro };
-
-  const { tasks, edit, setEdit, handleInput, handleSubmit, handleDelete } =
+  const { title, note, totalPomodoro } = initialTask;
+  const { handleDelete } = useDeleteTask(initialTask);
+  const { tasks, edit, setEdit, handleInputChange, handleTaskSubmit } =
     useEditTask(initialTask);
 
   return (
@@ -27,7 +27,7 @@ const Tasks = ({ id, title, note, totalPomodoro }) => {
               placeholder="Think of a title..."
               name="title"
               value={tasks.title}
-              onChange={handleInput}
+              onChange={handleInputChange}
             />
           ) : (
             <h4 className="font-medium">{title}</h4>
@@ -39,7 +39,7 @@ const Tasks = ({ id, title, note, totalPomodoro }) => {
               name="note"
               placeholder="Add your note"
               value={tasks.note}
-              onChange={handleInput}
+              onChange={handleInputChange}
             ></textarea>
           ) : (
             <div>{note}</div>
@@ -76,7 +76,7 @@ const Tasks = ({ id, title, note, totalPomodoro }) => {
           </div>
           <div
             className={`flex items-center cursor-pointer`}
-            onClick={edit ? handleSubmit : () => setEdit(true)}
+            onClick={edit ? handleTaskSubmit : () => setEdit(true)}
           >
             {edit ? (
               <ion-icon name="checkmark-circle-outline"></ion-icon>
