@@ -12,7 +12,7 @@ const Header = ({ setToggle }) => {
           id="tasks-modal"
           onClick={setToggle}
         >
-          <ion-icon name="clipboard-outline"></ion-icon>
+          <ion-icon name="newspaper-outline"></ion-icon>{" "}
           <p className="text-sm font-medium">My Tasks</p>
         </div>
         <div

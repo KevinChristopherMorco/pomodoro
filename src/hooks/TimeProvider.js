@@ -1,15 +1,23 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, useMemo } from "react";
 
 const TimerContext = createContext();
 
 const TimerProvider = ({ children }) => {
-  const [initialTime, setInitialTime] = useState(
-    JSON.parse(localStorage.getItem("time")) || {
+  const [initialTime, setInitialTime] = useState(() => {
+    const defaultTime = {
       pomodoro: { hours: 0, minutes: 25, seconds: 0 },
       shortBreak: { hours: 0, minutes: 5, seconds: 0 },
       longBreak: { hours: 0, minutes: 15, seconds: 0 },
+    };
+
+    const storedTime = JSON.parse(localStorage.getItem("time"));
+    if (storedTime) {
+      return storedTime;
+    } else {
+      localStorage.setItem("time", JSON.stringify(defaultTime));
+      return defaultTime;
     }
-  );
+  });
 
   const [type, setType] = useState(localStorage.getItem("type") || "pomodoro");
   const { hours, minutes, seconds } = initialTime[type];
@@ -55,15 +63,11 @@ const TimerProvider = ({ children }) => {
         clearInterval(interval);
       };
     }
-  }, [action]);
+  }, [action, type]);
 
   const resetTimer = () => {
-    const defaultTimers = {
-      pomodoro: { hours: 0, minutes: 25, seconds: 0 },
-      shortBreak: { hours: 0, minutes: 5, seconds: 0 },
-      longBreak: { hours: 0, minutes: 15, seconds: 0 },
-    };
-    const { hours, minutes, seconds } = defaultTimers[type];
+    const storedTime = JSON.parse(localStorage.getItem("time"));
+    const { hours, minutes, seconds } = storedTime[type];
     setInitialTime((prev) => {
       return {
         ...prev,

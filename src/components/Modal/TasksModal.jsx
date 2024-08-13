@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { v4 as uuid } from "uuid";
+import React from "react";
 
-import Tasks from "../DynamicTemplates/Tasks";
 import TasksModalList from "./TasksModalList";
 import TasksModalView from "./TasksModalView";
 

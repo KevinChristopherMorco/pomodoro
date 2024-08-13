@@ -1,6 +1,6 @@
 import React from "react";
-import Theme from "./ModalViews/Theme";
-import Time from "./ModalViews/Time";
+import Theme from "./ModalViews/SettingViews/Theme";
+import Time from "./ModalViews/SettingViews/Time";
 
 const ModalView = ({ currentView }) => {
   return (

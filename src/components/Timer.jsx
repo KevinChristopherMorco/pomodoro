@@ -50,7 +50,7 @@ const Timer = () => {
       </ul>
       <div className="p-4 flex flex-col items-center gap-y-14">
         <div className="flex flex-col gap-y-10 text-center">
-          <img
+          {/* <img
             src={minutes === 0 ? test : chick}
             alt=""
             className={`transition-all duration-500 ${
@@ -58,7 +58,7 @@ const Timer = () => {
                 ? "opacity-100 max-h-52"
                 : "opacity-0 max-h-0 overflow-hidden"
             }`}
-          />
+          /> */}
           <h1 className="text-5xl font-bold">
             {String(hours).padStart(2, 0)} : {String(minutes).padStart(2, 0)} :{" "}
             {String(seconds).padStart(2, 0)}
@@ -76,7 +76,7 @@ const Timer = () => {
         <div className="flex justify-center gap-x-10">
           <button
             className="bg-[var(--accent-color)] p-4 flex justify-center items-center font-bold text-xl text-[var(--text-accent)] rounded-full"
-            onClick={() => (action ? setAction(false) : setAction(true))}
+            onClick={() => setAction(!action)}
           >
             {action ? (
               <ion-icon name="pause"></ion-icon>

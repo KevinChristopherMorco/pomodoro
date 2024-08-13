@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
-import { TimerContext } from "../../../hooks/TimeProvider";
-import useEditTimer from "../../../hooks/crud/timer/useEditTimer";
+import React, { useContext } from "react";
+import { TimerContext } from "../../../../hooks/TimeProvider";
+import useEditTimer from "../../../../hooks/crud/timer/useEditTimer";
 
 const Time = ({ currentView }) => {
   const getTimeContext = useContext(TimerContext);

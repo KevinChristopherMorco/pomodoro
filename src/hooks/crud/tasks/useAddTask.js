@@ -1,8 +1,6 @@
 import { useState, useEffect, useContext, useMemo } from "react";
 import { v4 as uuid } from "uuid";
-import useLocalStorage from "../../useLocalStorage";
-
-import { StorageContext } from "../../LocalStorageProvider";
+import { StorageContext } from "../../storage/LocalStorageProvider";
 
 const useAddTask = () => {
   const getStorageContext = useContext(StorageContext);
@@ -13,7 +11,8 @@ const useAddTask = () => {
     title: "",
     note: "",
     totalPomodoro: 1,
-    currentPomdoro: 0,
+    currentPomodoro: 0,
+    status: "incomplete",
   });
 
   const handleSubmit = () => {

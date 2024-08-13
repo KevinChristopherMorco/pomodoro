@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import useAddTask from "../../../hooks/crud/tasks/useAddTask";
+import useAddTask from "../../../../hooks/crud/tasks/useAddTask";
 
 const AddNote = () => {
   const [viewNotes, setViewNotes] = useState(false);
