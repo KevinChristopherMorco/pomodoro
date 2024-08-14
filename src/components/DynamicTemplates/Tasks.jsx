@@ -70,7 +70,7 @@ const Tasks = ({ initialTask, active, setTimerTask, status }) => {
       >
         {status !== "complete" && (
           <div
-            className="flex items-center text-[var(--accent-color)]"
+            className="flex items-center gap-x-1 text-[var(--text-color)]"
             onClick={() => setTimerTask(initialTask.id)}
           >
             <ion-icon name="alarm-outline"></ion-icon>
@@ -78,7 +78,7 @@ const Tasks = ({ initialTask, active, setTimerTask, status }) => {
           </div>
         )}
         <div
-          className={` text-lg text-[var(--accent-color)] ${
+          className={` text-lg text-[var(--text-color)] ${
             hover ? "flex gap-x-4 items-center" : "hidden"
           }`}
         >

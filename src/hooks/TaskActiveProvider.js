@@ -1,11 +1,10 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 
 const TaskActiveContext = createContext();
-const CurrentViewContext = createContext();
 
 const TaskActiveProvider = ({ children }) => {
   const [activeId, setId] = useState(
-    JSON.parse(localStorage.getItem("activeTask")) || null
+    JSON.parse(localStorage.getItem("activeTask")) || { id: null }
   );
   const setTimerTask = (id) => {
     setId({ id: id });
@@ -23,19 +22,8 @@ const TaskActiveProvider = ({ children }) => {
   );
 };
 
-const CurrentViewProvider = ({ children }) => {
-  const [currentView, setCurrentView] = useState(null);
-
-  return (
-    <CurrentViewContext.Provider value={(currentView, setCurrentView)}>
-      {children}
-    </CurrentViewContext.Provider>
-  );
+const useActiveTask = () => {
+  return useContext(TaskActiveContext);
 };
 
-export {
-  TaskActiveProvider,
-  TaskActiveContext,
-  CurrentViewProvider,
-  CurrentViewContext,
-};
+export { TaskActiveProvider, useActiveTask };

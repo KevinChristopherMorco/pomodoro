@@ -1,4 +1,4 @@
-import React, { createContext, useState, useMemo } from "react";
+import React, { createContext, useContext, useState, useMemo } from "react";
 const StorageContext = createContext();
 const StorageContextProvider = ({ children }) => {
   const [storage, setStorage] = useState(
@@ -16,4 +16,8 @@ const StorageContextProvider = ({ children }) => {
   );
 };
 
-export { StorageContextProvider, StorageContext };
+const useStorageContext = () => {
+  return useContext(StorageContext);
+};
+
+export { StorageContextProvider, useStorageContext };

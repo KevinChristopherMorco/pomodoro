@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useMemo } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 
 const TimerContext = createContext();
 
@@ -136,4 +136,8 @@ const TimerProvider = ({ children }) => {
   );
 };
 
-export { TimerProvider, TimerContext };
+const useTimeContext = () => {
+  return useContext(TimerContext);
+};
+
+export { TimerProvider, useTimeContext };

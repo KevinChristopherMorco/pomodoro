@@ -1,16 +1,14 @@
 import { useState, useContext, useEffect, useMemo } from "react";
-import { StorageContext } from "../../storage/LocalStorageProvider";
-import { TimerContext } from "../../TimeProvider";
 import { TaskActiveContext } from "../../TaskActiveProvider";
 import useTimerView from "../../useTimerView";
+import { useStorageContext } from "../../storage/LocalStorageProvider";
+import { useTimeContext } from "../../TimeProvider";
+import { useActiveTask } from "../../TaskActiveProvider";
 
 const useEditTask = (initialTask) => {
-  const getStorageContext = useContext(StorageContext);
-  const getTimeContext = useContext(TimerContext);
-  const getActiveContext = useContext(TaskActiveContext);
   const [edit, setEdit] = useState(false);
   const [tasks, setTasks] = useState(initialTask);
-  const { storage, setStorage } = getStorageContext;
+  const { storage, setStorage } = useStorageContext();
 
   const {
     initialTime: {
@@ -21,8 +19,8 @@ const useEditTask = (initialTask) => {
     type,
     setType,
     setAction,
-  } = getTimeContext;
-  const { setId } = getActiveContext;
+  } = useTimeContext();
+  const { setId } = useActiveTask();
 
   const { setTimerView } = useTimerView(setType, setAction);
 

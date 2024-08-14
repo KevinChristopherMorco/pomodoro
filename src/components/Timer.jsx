@@ -3,17 +3,15 @@ import chick from "../gif/chick.gif";
 import test from "../gif/test.gif";
 import Swal from "sweetalert2";
 
-import { TimerContext } from "../hooks/TimeProvider";
 import { TaskActiveContext } from "../hooks/TaskActiveProvider";
+import { useActiveTask } from "../hooks/TaskActiveProvider";
+import { useTimeContext } from "../hooks/TimeProvider";
 
 const Timer = () => {
-  const getTimeContext = useContext(TimerContext);
-  const getTaskActiveContext = useContext(TaskActiveContext);
-
   const { type, setType, setTimer, action, setAction, resetTimer } =
-    getTimeContext;
+    useTimeContext();
   const { hours, minutes, seconds } = setTimer();
-  const { activeId } = getTaskActiveContext;
+  const { activeId } = useActiveTask();
   const { id } = activeId;
 
   return (

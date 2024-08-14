@@ -1,9 +1,7 @@
-import { useContext } from "react";
-import { StorageContext } from "../../storage/LocalStorageProvider";
+import { useStorageContext } from "../../storage/LocalStorageProvider";
 
 const useDeleteTask = (initialTask) => {
-  const getStorageContext = useContext(StorageContext);
-  const { storage, setStorage } = getStorageContext;
+  const { storage, setStorage } = useStorageContext();
   const { id } = initialTask;
 
   const handleDelete = () => {

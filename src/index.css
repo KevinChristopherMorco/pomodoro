@@ -9,25 +9,53 @@
 
 @layer base {
   :root {
-    --primary-color: #f2f3f3;
-    --secondary-color: #acacac;
-    --accent-color: #000;
-    --text-color: #000;
-    --text-accent: #fff;
+    --primary-classic: #f2f3f3;
+    --secondary-classic: #acacac;
+    --accent-classic: #000;
+    --text-classic: #000;
+    --text-accent-classic: #fff;
+
+    --primary-nightfall: #0d0d0d;
+    --secondary-nightfall: #1a1a1a;
+    --accent-nightfall: #e63946;
+    --text-nightfall: #ffffff;
+    --text-accent-nightfall: #f1faee;
 
     --primary-twilight: #150e17;
     --secondary-twilight: #959296;
     --accent-twilight: #861aa7;
     --text-twilight: #fff;
     --text-accent-twilight: #fff;
+
+    --primary-sunburst: #ff4500;
+    --secondary-sunburst: #ff6347;
+    --accent-sunburst: #ffcc00;
+    --text-sunburst: #ffffff;
+    --text-accent-sunburst: #ffe4b5;
   }
 
   .classic {
-    --primary-color: var(--primary-color);
-    --secondary-color: var(--secondary-color);
-    --accent-color: var(--accent-color);
-    --text-color: var(--text-color);
-    --text-accent: var(--text-accent);
+    --primary-color: var(--primary-classic);
+    --secondary-color: var(--secondary-classic);
+    --accent-color: var(--accent-classic);
+    --text-color: var(--text-classic);
+    --text-accent: var(--text-accent-classic);
+  }
+
+  .sunburst {
+    --primary-color: var(--primary-sunburst);
+    --secondary-color: var(--secondary-sunburst);
+    --accent-color: var(--accent-sunburst);
+    --text-color: var(--text-sunburst);
+    --text-accent: var(--text-accent-sunburst);
+  }
+
+  .nightfall {
+    --primary-color: var(--primary-nightfall);
+    --secondary-color: var(--secondary-nightfall);
+    --accent-color: var(--accent-nightfall);
+    --text-color: var(--text-nightfall);
+    --text-accent: var(--text-accent-nightfall);
   }
 
   .twilight {

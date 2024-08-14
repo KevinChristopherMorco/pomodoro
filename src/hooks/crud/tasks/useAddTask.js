@@ -1,10 +1,9 @@
 import { useState, useEffect, useContext, useMemo } from "react";
 import { v4 as uuid } from "uuid";
-import { StorageContext } from "../../storage/LocalStorageProvider";
+import { useStorageContext } from "../../storage/LocalStorageProvider";
 
 const useAddTask = () => {
-  const getStorageContext = useContext(StorageContext);
-  const { setStorage } = getStorageContext;
+  const { setStorage } = useStorageContext();
 
   const [tasks, setTasks] = useState({
     id: "",

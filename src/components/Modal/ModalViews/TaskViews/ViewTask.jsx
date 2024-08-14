@@ -1,16 +1,12 @@
 import React, { useContext, useState } from "react";
 import Tasks from "../../../DynamicTemplates/Tasks";
 
-import { StorageContext } from "../../../../hooks/storage/LocalStorageProvider";
-
-import { TaskActiveContext } from "../../../../hooks/TaskActiveProvider";
+import { useStorageContext } from "../../../../hooks/storage/LocalStorageProvider";
+import { useActiveTask } from "../../../../hooks/TaskActiveProvider";
 
 const ViewTask = () => {
-  const getStorageContext = useContext(StorageContext);
-  const { storage } = getStorageContext;
-  const getTaskActiveContext = useContext(TaskActiveContext);
-
-  const { setTimerTask, activeId } = getTaskActiveContext;
+  const { storage } = useStorageContext();
+  const { setTimerTask, activeId } = useActiveTask();
 
   if (storage.length === 0) {
     return (

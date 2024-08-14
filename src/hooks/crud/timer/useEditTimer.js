@@ -1,8 +1,7 @@
-import { useState, useContext } from "react";
-import { TimerContext } from "../../TimeProvider";
+import { useState } from "react";
+import { useTimeContext } from "../../TimeProvider";
 const useEditTimer = () => {
-  const getTimeContext = useContext(TimerContext);
-  const { setInitialTime, populateTimerValue } = getTimeContext;
+  const { setInitialTime, populateTimerValue } = useTimeContext();
   const {
     pomodoroHours,
     pomodoroMinutes,
@@ -15,7 +14,7 @@ const useEditTimer = () => {
     shortBreakSeconds,
   } = populateTimerValue();
 
-  //State for user inputs
+  //State for default input values
   const [values, setValue] = useState({
     pomodoro: {
       hours: pomodoroHours,

@@ -12,7 +12,7 @@ const AddNote = () => {
         <input
           type="text"
           name="title"
-          className="w-full px-4 py-3 text-sm shadow-sm shadow-[var(--secondary-color)] bg-transparent border border-[var(--secondary-color)] rounded"
+          className="w-full px-4 py-3 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-transparent border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
           placeholder="Do you have any tasks in mind?"
           onChange={handleInput}
         />
@@ -23,7 +23,7 @@ const AddNote = () => {
           type="number"
           name="totalPomodoro"
           id=""
-          className="w-[40%] px-4 py-2 shadow-sm shadow-[var(--secondary-color)] border border-[var(--secondary-color)] text-sm bg-transparent rounded"
+          className="w-[40%] px-4 py-2 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-transparent border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
           onChange={handleInput}
           value={tasks.totalPomodoro}
         />
