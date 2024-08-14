@@ -1,8 +1,8 @@
 import React from "react";
-import AddTask from "./ModalViews/TaskViews/AddTask";
-import ViewTask from "./ModalViews/TaskViews/ViewTask";
+import AddTask from "./AddTask";
+import ViewTask from "./ViewTask";
 
-import { StorageContextProvider } from "../../hooks/storage/LocalStorageProvider";
+import { StorageContextProvider } from "../../../../hooks/storage/LocalStorageProvider";
 
 const TasksModalView = ({ currentView }) => {
   return (

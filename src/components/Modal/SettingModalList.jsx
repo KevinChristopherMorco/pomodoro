@@ -1,6 +1,6 @@
 import React from "react";
 
-const ModalList = ({ currentView, setCurrentView }) => {
+const SettingModalList = ({ currentView, setCurrentView }) => {
   return (
     <>
       <ul className="flex flex-col gap-y-4 text-sm font-medium">
@@ -42,4 +42,4 @@ const ModalList = ({ currentView, setCurrentView }) => {
   );
 };
 
-export default ModalList;
+export default SettingModalList;

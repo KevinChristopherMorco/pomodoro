@@ -4,18 +4,22 @@ import test from "../gif/test.gif";
 import Swal from "sweetalert2";
 
 import { TimerContext } from "../hooks/TimeProvider";
+import { TaskActiveContext } from "../hooks/TaskActiveProvider";
 
 const Timer = () => {
   const getTimeContext = useContext(TimerContext);
+  const getTaskActiveContext = useContext(TaskActiveContext);
+
   const { type, setType, setTimer, action, setAction, resetTimer } =
     getTimeContext;
   const { hours, minutes, seconds } = setTimer();
+  const { activeId } = getTaskActiveContext;
+  const { id } = activeId;
 
   return (
     <div className="h-full flex flex-col">
       <ul className="w-[100%] my-10 flex justify-around font-medium">
         <li
-          id="pomodoro"
           className={`cursor-pointer p-2 rounded-lg ${
             type === "pomodoro"
               ? "bg-[var(--accent-color)] text-white"
@@ -25,19 +29,8 @@ const Timer = () => {
         >
           Pomodoro
         </li>
+
         <li
-          id="longBreak"
-          className={`cursor-pointer p-2 rounded-lg ${
-            type === "longBreak"
-              ? "bg-[var(--accent-color)] text-white"
-              : "bg-transparent"
-          }`}
-          onClick={() => setType("longBreak")}
-        >
-          Long Break
-        </li>
-        <li
-          id="shortBreak"
           className={`cursor-pointer p-2 rounded-lg ${
             type === "shortBreak"
               ? "bg-[var(--accent-color)] text-white"
@@ -46,6 +39,16 @@ const Timer = () => {
           onClick={() => setType("shortBreak")}
         >
           Short Break
+        </li>
+        <li
+          className={`cursor-pointer p-2 rounded-lg ${
+            type === "longBreak"
+              ? "bg-[var(--accent-color)] text-white"
+              : "bg-transparent"
+          }`}
+          onClick={() => setType("longBreak")}
+        >
+          Long Break
         </li>
       </ul>
       <div className="p-4 flex flex-col items-center gap-y-14">
@@ -73,7 +76,7 @@ const Timer = () => {
             Chicken is growing...
           </h6>
         </div>
-        <div className="flex justify-center gap-x-10">
+        <div className={`flex justify-center gap-x-10 ${!id && "hidden"}`}>
           <button
             className="bg-[var(--accent-color)] p-4 flex justify-center items-center font-bold text-xl text-[var(--text-accent)] rounded-full"
             onClick={() => setAction(!action)}

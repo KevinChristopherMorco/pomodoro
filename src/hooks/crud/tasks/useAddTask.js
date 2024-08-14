@@ -10,6 +10,7 @@ const useAddTask = () => {
     id: "",
     title: "",
     note: "",
+    countPomodoro: 0,
     totalPomodoro: 1,
     currentPomodoro: 0,
     status: "incomplete",

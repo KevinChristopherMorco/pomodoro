@@ -24,12 +24,14 @@ const ViewTask = () => {
   return (
     <>
       {storage.map((initialTask) => {
-        const { id, status } = initialTask;
+        const { id: tasksIds, status } = initialTask;
+        const { id: activeIds } = activeId;
+
         return (
           <Tasks
-            key={id}
+            key={tasksIds}
             initialTask={initialTask}
-            active={id === activeId}
+            active={tasksIds === activeIds}
             setTimerTask={setTimerTask}
             status={status}
           />

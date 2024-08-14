@@ -9,7 +9,10 @@ import TasksModal from "./components/Modal/TasksModal";
 import useToggleModal from "./hooks/useToggleModal";
 import { useState } from "react";
 import { TimerProvider } from "./hooks/TimeProvider";
-import { TaskActiveProvider } from "./hooks/TaskActiveProvider";
+import {
+  TaskActiveProvider,
+  CurrentViewProvider,
+} from "./hooks/TaskActiveProvider";
 
 function App() {
   // document.body.classList.add("twilight");
@@ -20,13 +23,16 @@ function App() {
     <>
       <Header setToggle={setToggle} />
       <TimerProvider>
-        <Timer />
-        <SettingModal
-          settings={settings}
-          setModalType={setModalType}
-          modalType={modalType}
-        />
         <TaskActiveProvider>
+          <CurrentViewProvider>
+            <Timer />
+            <SettingModal
+              settings={settings}
+              setModalType={setModalType}
+              modalType={modalType}
+            />
+          </CurrentViewProvider>
+
           <TasksModal setModalType={setModalType} modalType={modalType} />
         </TaskActiveProvider>
       </TimerProvider>

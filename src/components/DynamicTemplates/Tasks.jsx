@@ -79,7 +79,7 @@ const Tasks = ({ initialTask, active, setTimerTask, status }) => {
         )}
         <div
           className={` text-lg text-[var(--accent-color)] ${
-            hover ? "flex gap-x-4 items-center" : "hidden invisible"
+            hover ? "flex gap-x-4 items-center" : "hidden"
           }`}
         >
           <div

@@ -1,8 +1,7 @@
 import React from "react";
 
 import TasksModalList from "./TasksModalList";
-import TasksModalView from "./TasksModalView";
-
+import TasksModalView from "./ModalViews/TaskViews/TasksModalView";
 import useListActive from "../../hooks/useListActive";
 
 const TasksModal = ({ setModalType, modalType }) => {

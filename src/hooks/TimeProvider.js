@@ -20,14 +20,19 @@ const TimerProvider = ({ children }) => {
   });
 
   const [type, setType] = useState(localStorage.getItem("type") || "pomodoro");
-  const { hours, minutes, seconds } = initialTime[type];
 
   const setTimer = () => {
+    const { hours, minutes, seconds } = initialTime[type];
+
     return { hours, minutes, seconds };
   };
 
   //Set the type of timer pomodoro,shortbreak and longbreak and set it to the localstorage
-  useEffect(() => localStorage.setItem("type", type), [type]);
+  useEffect(() => {
+    const storedTime = JSON.parse(localStorage.getItem("time"));
+    localStorage.setItem("type", type);
+    setInitialTime(storedTime);
+  }, [type]);
 
   const [action, setAction] = useState(false);
 
@@ -63,7 +68,7 @@ const TimerProvider = ({ children }) => {
         clearInterval(interval);
       };
     }
-  }, [action, type]);
+  }, [action]);
 
   const resetTimer = () => {
     const storedTime = JSON.parse(localStorage.getItem("time"));
@@ -77,6 +82,9 @@ const TimerProvider = ({ children }) => {
   };
 
   const populateTimerValue = () => {
+    const storedTime = JSON.parse(localStorage.getItem("time"));
+    // console.log(storedTime);
+
     const {
       pomodoro: {
         hours: pomodoroHours,
@@ -93,27 +101,21 @@ const TimerProvider = ({ children }) => {
         minutes: shortBreakMinutes,
         seconds: shortBreakSeconds,
       },
-    } = initialTime;
+    } = storedTime;
 
-    const pomodoro = {
+    const populateTime = {
       pomodoroHours,
       pomodoroMinutes,
       pomodoroSeconds,
-    };
-
-    const longBreak = {
       longBreakHours,
       longBreakMinutes,
       longBreakSeconds,
-    };
-
-    const shortBreak = {
       shortBreakHours,
       shortBreakMinutes,
       shortBreakSeconds,
     };
 
-    return { ...pomodoro, ...longBreak, ...shortBreak };
+    return populateTime;
   };
   return (
     <TimerContext.Provider

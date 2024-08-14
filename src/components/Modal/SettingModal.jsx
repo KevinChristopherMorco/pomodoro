@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import ModalView from "./SettingModalView";
-import ModalList from "./SettingModalList";
+import React from "react";
+import SettingModalView from "./ModalViews/SettingViews/SettingModalView";
+import SettingModalList from "./SettingModalList";
 import useListActive from "../../hooks/useListActive";
 
 const Modal = ({ setModalType, setMinutes, modalType }) => {
@@ -33,13 +33,16 @@ const Modal = ({ setModalType, setMinutes, modalType }) => {
           </div>
           <div className="flex justify-between">
             <div className="basis-[20%]">
-              <ModalList
+              <SettingModalList
                 currentView={currentView}
                 setCurrentView={setCurrentView}
               />
             </div>
             <div className="basis-[70%]">
-              <ModalView currentView={currentView} setMinutes={setMinutes} />
+              <SettingModalView
+                currentView={currentView}
+                setMinutes={setMinutes}
+              />
             </div>
           </div>
         </div>
