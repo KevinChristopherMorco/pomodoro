@@ -19,7 +19,7 @@ const Audio = ({ currentView }) => {
           <select
             name=""
             id=""
-            className="w-full p-2 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded cursor-pointer"
+            className="w-full p-2 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded cursor-pointer cursor-pointer"
           >
             <option value="">Chimes</option>
             <option value="">Beep Sound</option>

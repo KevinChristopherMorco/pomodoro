@@ -15,7 +15,7 @@ const useDeleteTask = (initialTask) => {
     };
     const deleteTask = () => {
       setStorage(storage.filter((x) => x.id !== id));
-      successAlert("Task", "deleted");
+      successAlert({ title: "Task was deleted" });
     };
     confirmationAlert(customMessage, deleteTask);
   };

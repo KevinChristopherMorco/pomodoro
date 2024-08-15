@@ -39,7 +39,7 @@ const Time = ({ currentView }) => {
             <div className="basis-[30%]">
               <input
                 type="number"
-                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
+                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded cursor-pointer"
                 name="hours"
                 data-type="pomodoro"
                 min={0}
@@ -51,7 +51,7 @@ const Time = ({ currentView }) => {
             <div className="basis-[30%]">
               <input
                 type="number"
-                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
+                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded cursor-pointer"
                 name="minutes"
                 data-type="pomodoro"
                 max={59}
@@ -64,7 +64,7 @@ const Time = ({ currentView }) => {
             <div className="basis-[30%]">
               <input
                 type="number"
-                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
+                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded cursor-pointer"
                 name="seconds"
                 data-type="pomodoro"
                 max={59}
@@ -84,7 +84,7 @@ const Time = ({ currentView }) => {
             <div className="basis-[30%]">
               <input
                 type="number"
-                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
+                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded cursor-pointer"
                 name="hours"
                 data-type="longBreak"
                 min={0}
@@ -96,7 +96,7 @@ const Time = ({ currentView }) => {
             <div className="basis-[30%]">
               <input
                 type="number"
-                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
+                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded cursor-pointer"
                 name="minutes"
                 data-type="longBreak"
                 max={59}
@@ -109,7 +109,7 @@ const Time = ({ currentView }) => {
             <div className="basis-[30%]">
               <input
                 type="number"
-                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
+                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded cursor-pointer"
                 name="seconds"
                 max={59}
                 min={0}
@@ -129,7 +129,7 @@ const Time = ({ currentView }) => {
             <div className="basis-[30%]">
               <input
                 type="number"
-                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
+                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded cursor-pointer"
                 name="hours"
                 data-type="shortBreak"
                 min={0}
@@ -141,7 +141,7 @@ const Time = ({ currentView }) => {
             <div className="basis-[30%]">
               <input
                 type="number"
-                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
+                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded cursor-pointer"
                 name="minutes"
                 data-type="shortBreak"
                 max={59}
@@ -154,7 +154,7 @@ const Time = ({ currentView }) => {
             <div className="basis-[30%]">
               <input
                 type="number"
-                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
+                className="w-full px-2 py-1 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded cursor-pointer"
                 name="seconds"
                 data-type="shortBreak"
                 max={59}

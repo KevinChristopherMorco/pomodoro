@@ -5,6 +5,8 @@ import { useStorageContext } from "../../storage/LocalStorageProvider";
 import { useTimeContext } from "../../TimeProvider";
 import { useActiveTask } from "../../TaskActiveProvider";
 
+import { confirmationAlert } from "../../../components/Alerts/alerts";
+
 const useEditTask = (initialTask) => {
   const [edit, setEdit] = useState(false);
   const [tasks, setTasks] = useState(initialTask);
@@ -92,12 +94,21 @@ const useEditTask = (initialTask) => {
   const handleTaskSubmit = () => {
     const { id } = initialTask;
     const { title, note } = tasks;
-    setStorage(
-      storage.map((task) => {
-        return task.id === id ? { ...task, title: title, note: note } : task;
-      })
-    );
-    setEdit(false);
+    const customMessage = {
+      title: "Apply changes?",
+      text: "Changes cannot be undone!",
+    };
+
+    const editTask = () => {
+      setStorage(
+        storage.map((task) => {
+          return task.id === id ? { ...task, title: title, note: note } : task;
+        })
+      );
+      setEdit(false);
+    };
+
+    confirmationAlert(customMessage, editTask);
   };
 
   return {

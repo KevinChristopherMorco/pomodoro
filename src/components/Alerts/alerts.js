@@ -6,13 +6,14 @@ const Toast = Swal.mixin({
   showConfirmButton: false,
   timerProgressBar: true,
   customClass: {
-    popup: "!bg-[var(--primary-color)]",
+    popup: "!bg-[var(--secondary-color)] !text-[var(--text-accent-color)]",
   },
 });
 
-const successAlert = (subject, action) => {
+const successAlert = (customMessage) => {
+  const { title } = customMessage;
   return Toast.fire({
-    title: `${subject} was ${action}`,
+    title,
     width: "70%",
     icon: "success",
     iconColor: "green",

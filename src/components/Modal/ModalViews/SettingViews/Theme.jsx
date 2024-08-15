@@ -26,7 +26,7 @@ const Theme = ({ currentView }) => {
             name=""
             id=""
             onChange={onThemeChange}
-            className="w-full p-2 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded cursor-pointer"
+            className="w-full p-2 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded cursor-pointer"
           >
             <option value="classic">Classic</option>
             <option value="sunburst">Sunset Breeze</option>

@@ -23,12 +23,13 @@ const useAddTask = () => {
       ...tasks,
       id: `${uuid()}-${new Date().getTime()}`,
     };
+
     setStorage((prev) => {
       return [...prev, submitTask];
     });
 
     setTasks({ ...tasks, title: "", note: "" });
-    successAlert("Task", "added");
+    successAlert({ title: "Task was added" });
   };
 
   const handleInput = (event) => {

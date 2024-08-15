@@ -16,7 +16,7 @@ const AddNote = () => {
         <input
           type="text"
           name="title"
-          className="w-full px-4 py-3 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-transparent border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
+          className="w-full px-4 py-3 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-transparent border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)]  rounded"
           placeholder="Do you have any tasks in mind?"
           onChange={handleInput}
           value={title}
@@ -28,13 +28,13 @@ const AddNote = () => {
           type="number"
           name="totalPomodoro"
           id=""
-          className="w-[40%] px-4 py-2 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-transparent border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
+          className="w-[40%] px-4 py-2 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-transparent border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded"
           onChange={handleInput}
           value={totalPomodoro}
         />
       </div>
       <div
-        className="w-full flex items-center gap-x-2 font-medium cursor-pointer"
+        className="w-fit flex items-center gap-x-2 font-medium cursor-pointer"
         onClick={() => setViewNotes(!viewNotes)}
       >
         <ion-icon name="newspaper-outline"></ion-icon>
@@ -50,7 +50,7 @@ const AddNote = () => {
           <textarea
             name="note"
             id=""
-            className="w-[100%] p-1 shadow-sm shadow-[var(--secondary-color)] border border-[var(--secondary-color)] text-sm bg-transparent rounded"
+            className="w-[100%] px-4 py-2 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-transparent border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded"
             placeholder="Think of a meaningful note..."
             maxLength={90}
             onChange={handleInput}
