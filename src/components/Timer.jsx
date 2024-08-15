@@ -4,13 +4,28 @@ import test from "../gif/test.gif";
 
 import { useActiveTask } from "../hooks/TaskActiveProvider";
 import { useTimeContext } from "../hooks/TimeProvider";
+import useAudio from "../hooks/useAudio";
 
 const Timer = () => {
-  const { type, setType, setTimer, action, setAction, resetTimer } =
-    useTimeContext();
+  const {
+    type,
+    setType,
+    setTimer,
+    action,
+    setAction,
+    resetTimer,
+    countdown,
+    setCountdown,
+  } = useTimeContext();
   const { hours, minutes, seconds } = setTimer();
   const { activeId } = useActiveTask();
   const { id } = activeId;
+  const { stopAudio } = useAudio();
+
+  const handleAction = () => {
+    setAction(!action);
+    setCountdown(!countdown);
+  };
 
   return (
     <div className="h-full flex flex-col">
@@ -75,7 +90,7 @@ const Timer = () => {
         <div className={`flex justify-center gap-x-10 ${!id && "hidden"}`}>
           <button
             className="bg-[var(--accent-color)] p-4 flex justify-center items-center font-bold text-xl text-[var(--text-accent)] rounded-full"
-            onClick={() => setAction(!action)}
+            onClick={handleAction}
           >
             {action ? (
               <ion-icon name="pause"></ion-icon>

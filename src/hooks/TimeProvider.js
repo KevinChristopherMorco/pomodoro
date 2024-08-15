@@ -35,7 +35,7 @@ const TimerProvider = ({ children }) => {
   }, [type]);
 
   const [action, setAction] = useState(false);
-
+  const [countdown, setCountdown] = useState(false);
   //Diminish 1 second if timer was started
   useEffect(() => {
     if (action) {
@@ -127,6 +127,8 @@ const TimerProvider = ({ children }) => {
         setTimer,
         action,
         setAction,
+        countdown,
+        setCountdown,
         resetTimer,
         populateTimerValue,
       }}

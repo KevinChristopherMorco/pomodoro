@@ -21,8 +21,9 @@ const Audio = ({ currentView }) => {
             id=""
             className="w-full p-2 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-[var(--primary-color)] border border-[var(--accent-color)] focus:outline focus:outline-[var(--accent-color)] rounded cursor-pointer cursor-pointer"
           >
-            <option value="">Chimes</option>
-            <option value="">Beep Sound</option>
+            <option value="">Car Alarm</option>
+            <option value="">Classic Alarm Beep</option>
+            <option value="">Mr. Clown</option>
           </select>
         </div>
         <div className="w-full pt-4 mt-4 flex justify-end border-t border-[var(--secondary-color)]">
