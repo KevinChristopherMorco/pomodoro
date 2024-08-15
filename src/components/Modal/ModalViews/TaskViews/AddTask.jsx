@@ -3,7 +3,11 @@ import useAddTask from "../../../../hooks/crud/tasks/useAddTask";
 
 const AddNote = () => {
   const [viewNotes, setViewNotes] = useState(false);
-  const { tasks, handleInput, handleSubmit } = useAddTask();
+  const {
+    tasks: { title, note, totalPomodoro },
+    handleInput,
+    handleSubmit,
+  } = useAddTask();
   return (
     <>
       <div className="w-full flex flex-col gap-y-2">
@@ -15,6 +19,7 @@ const AddNote = () => {
           className="w-full px-4 py-3 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-transparent border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
           placeholder="Do you have any tasks in mind?"
           onChange={handleInput}
+          value={title}
         />
       </div>
       <div className="w-full flex flex-col gap-y-2">
@@ -25,7 +30,7 @@ const AddNote = () => {
           id=""
           className="w-[40%] px-4 py-2 text-sm text-[var(--text-color)] shadow-sm shadow-[var(--secondary-color)] bg-transparent border border-[var(--accent-color)] outline-1 outline-[var(--accent-color)] rounded"
           onChange={handleInput}
-          value={tasks.totalPomodoro}
+          value={totalPomodoro}
         />
       </div>
       <div
@@ -49,6 +54,7 @@ const AddNote = () => {
             placeholder="Think of a meaningful note..."
             maxLength={90}
             onChange={handleInput}
+            value={note}
           />
         </div>
       </div>

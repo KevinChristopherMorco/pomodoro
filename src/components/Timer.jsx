@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import chick from "../gif/chick.gif";
 import test from "../gif/test.gif";
-import Swal from "sweetalert2";
 
-import { TaskActiveContext } from "../hooks/TaskActiveProvider";
 import { useActiveTask } from "../hooks/TaskActiveProvider";
 import { useTimeContext } from "../hooks/TimeProvider";
 
