@@ -18,6 +18,7 @@
     --primary-nightfall: #0d0d0d;
     --secondary-nightfall: #1a1a1a;
     --accent-nightfall: #e63946;
+    --accent-light-nightfall: #cfa6aa;
     --text-nightfall: #ffffff;
     --text-accent-nightfall: #f1faee;
 
@@ -54,6 +55,7 @@
     --primary-color: var(--primary-nightfall);
     --secondary-color: var(--secondary-nightfall);
     --accent-color: var(--accent-nightfall);
+    --accent-light-color: var(--accent-light-nightfall);
     --text-color: var(--text-nightfall);
     --text-accent: var(--text-accent-nightfall);
   }

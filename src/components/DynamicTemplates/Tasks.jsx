@@ -11,10 +11,10 @@ const Tasks = ({ initialTask, active, setTimerTask, status }) => {
 
   return (
     <div
-      className={`w-full p-3 flex flex-col gap-y-4 shadow-sm shadow-[var(--secondary-color)] border rounded-lg cursor-pointer ${
+      className={`w-full p-3 flex flex-col gap-y-4 shadow-sm shadow-[var(--secondary-color)] rounded-lg cursor-pointer ${
         active
-          ? "border-[var(--accent-color)]"
-          : "border-[var(--secondary-color)]"
+          ? "border-2 border-[var(--accent-color)]"
+          : "border border-[var(--primary-color)]"
       } ${
         status === "complete"
           ? "bg-[var(--secondary-color)]"
@@ -39,6 +39,16 @@ const Tasks = ({ initialTask, active, setTimerTask, status }) => {
             />
           ) : (
             <h4 className="font-medium">{title}</h4>
+          )}
+
+          {status === "complete" && (
+            <div className="w-12 h-12 mx-1 flex justify-center items-center font-medium bg-[var(--accent-light-color)] border-2 border-[var(--accent-color)] rounded-full relative">
+              <div className="w-[4rem] h-5 flex items-center border-[0.15rem] bg-[var(--accent-color)] border-[var(--accent-color)] -rotate-6 absolute rounded">
+                <p className="w-full text-sm text-center text-[var(--text-accent)] font-bold">
+                  Finished
+                </p>
+              </div>
+            </div>
           )}
 
           {edit ? (
