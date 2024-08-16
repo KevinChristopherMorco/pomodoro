@@ -8,14 +8,10 @@ import useAudio from "../hooks/useAudio";
 
 const Timer = () => {
   const {
-    type,
-    setType,
-    setTimer,
-    action,
-    setAction,
-    resetTimer,
-    countdown,
-    setCountdown,
+    timerActions: { setTimer, resetTimer },
+    timerType: { type, setType },
+
+    timerCount: { action, setAction, alarm, stopAlarm },
   } = useTimeContext();
   const { hours, minutes, seconds } = setTimer();
   const { activeId } = useActiveTask();
@@ -24,7 +20,7 @@ const Timer = () => {
 
   const handleAction = () => {
     setAction(!action);
-    setCountdown(!countdown);
+    stopAlarm(!alarm);
   };
 
   return (

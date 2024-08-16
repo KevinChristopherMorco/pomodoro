@@ -11,21 +11,18 @@ const TimerProvider = ({ children }) => {
     };
 
     const storedTime = JSON.parse(localStorage.getItem("time"));
+
     if (storedTime) {
       return storedTime;
-    } else {
-      localStorage.setItem("time", JSON.stringify(defaultTime));
-      return defaultTime;
     }
+
+    localStorage.setItem("time", JSON.stringify(defaultTime));
+    return defaultTime;
   });
 
+  const [action, setAction] = useState(false);
+  const [alarm, stopAlarm] = useState(false);
   const [type, setType] = useState(localStorage.getItem("type") || "pomodoro");
-
-  const setTimer = () => {
-    const { hours, minutes, seconds } = initialTime[type];
-
-    return { hours, minutes, seconds };
-  };
 
   //Set the type of timer pomodoro,shortbreak and longbreak and set it to the localstorage
   useEffect(() => {
@@ -34,8 +31,11 @@ const TimerProvider = ({ children }) => {
     setInitialTime(storedTime);
   }, [type]);
 
-  const [action, setAction] = useState(false);
-  const [countdown, setCountdown] = useState(false);
+  const setTimer = () => {
+    const { hours, minutes, seconds } = initialTime[type];
+    return { hours, minutes, seconds };
+  };
+
   //Diminish 1 second if timer was started
   useEffect(() => {
     if (action) {
@@ -83,7 +83,6 @@ const TimerProvider = ({ children }) => {
 
   const populateTimerValue = () => {
     const storedTime = JSON.parse(localStorage.getItem("time"));
-    // console.log(storedTime);
 
     const {
       pomodoro: {
@@ -117,20 +116,37 @@ const TimerProvider = ({ children }) => {
 
     return populateTime;
   };
+
+  const timerValues = {
+    initialTime,
+    setInitialTime,
+  };
+
+  const timerActions = {
+    setTimer,
+    resetTimer,
+    populateTimerValue,
+  };
+
+  const timerType = {
+    type,
+    setType,
+  };
+
+  const timerCount = {
+    action,
+    setAction,
+    alarm,
+    stopAlarm,
+  };
+
   return (
     <TimerContext.Provider
       value={{
-        initialTime,
-        setInitialTime,
-        type,
-        setType,
-        setTimer,
-        action,
-        setAction,
-        countdown,
-        setCountdown,
-        resetTimer,
-        populateTimerValue,
+        timerValues,
+        timerType,
+        timerActions,
+        timerCount,
       }}
     >
       {children}

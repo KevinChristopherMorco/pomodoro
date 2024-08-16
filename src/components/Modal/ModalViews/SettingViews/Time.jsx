@@ -3,7 +3,9 @@ import { useTimeContext } from "../../../../hooks/TimeProvider";
 import useEditTimer from "../../../../hooks/crud/timer/useEditTimer";
 
 const Time = ({ currentView }) => {
-  const { populateTimerValue } = useTimeContext();
+  const {
+    timerActions: { populateTimerValue },
+  } = useTimeContext();
   const { handleInputChange, handleTimerSubmit } = useEditTimer();
   const {
     pomodoroHours,

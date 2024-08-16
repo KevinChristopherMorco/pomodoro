@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useTimeContext } from "../../TimeProvider";
 const useEditTimer = () => {
-  const { setInitialTime, populateTimerValue } = useTimeContext();
+  const {
+    timerValues: { setInitialTime },
+    timerActions: { populateTimerValue },
+  } = useTimeContext();
   const {
     pomodoroHours,
     pomodoroMinutes,

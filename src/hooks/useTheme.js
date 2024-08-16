@@ -29,4 +29,4 @@ const useTheme = () => {
   return { handleTheme, onThemeChange };
 };
 
-export default useTheme;
+export { useTheme };

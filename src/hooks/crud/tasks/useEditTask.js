@@ -13,17 +13,18 @@ const useEditTask = (initialTask) => {
   const { storage, setStorage } = useStorageContext();
 
   const {
-    initialTime: {
-      pomodoro: { seconds: pomodoroSec, minutes: pomodoroMin },
-      shortBreak: { seconds: shortBreakSec, minutes: shortBreakMin },
-      longBreak: { seconds: longBreakSec, minutes: longBreakMin },
+    timerValues: {
+      initialTime: {
+        pomodoro: { seconds: pomodoroSec, minutes: pomodoroMin },
+        shortBreak: { seconds: shortBreakSec, minutes: shortBreakMin },
+        longBreak: { seconds: longBreakSec, minutes: longBreakMin },
+      },
     },
-    type,
-    setType,
-    setAction,
+    timerType: { type, setType },
+    timerCount: { setAction },
   } = useTimeContext();
-  const { setId } = useActiveTask();
 
+  const { setId } = useActiveTask();
   const { setTimerView } = useTimerView(setType, setAction);
 
   const countTaskPomodoro = (task, activeId) => {
