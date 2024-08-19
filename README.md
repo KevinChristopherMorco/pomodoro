@@ -8,7 +8,7 @@ A simple app that helps you manage your time when doing tasks.
 
 ## Screenshots
 
-![Pomodoro](assets/screenshots/pomodoro.png)
+![Pomodoro](/screenshots/pomodoro.png)
 
 ## Lessons Learned
 
