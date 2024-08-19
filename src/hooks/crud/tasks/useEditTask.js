@@ -1,11 +1,10 @@
-import { useState, useContext, useEffect, useMemo } from "react";
-import { TaskActiveContext } from "../../TaskActiveProvider";
-import useTimerView from "../../useTimerView";
+import { useState, useEffect } from "react";
 import { useStorageContext } from "../../storage/LocalStorageProvider";
-import { useTimeContext } from "../../TimeProvider";
-import { useActiveTask } from "../../TaskActiveProvider";
-
+import { useTimeContext } from "../../Providers/TimeProvider";
+import { useActiveTask } from "../../Providers/TaskActiveProvider";
 import { confirmationAlert } from "../../../components/Alerts/alerts";
+
+import useTimerView from "../../useTimerView";
 
 const useEditTask = (initialTask) => {
   const [edit, setEdit] = useState(false);

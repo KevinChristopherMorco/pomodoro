@@ -1,27 +1,28 @@
 import React from "react";
 
-const TasksModalList = ({ currentView, setCurrentView }) => {
+const TasksModalList = ({ currentView, setActive }) => {
+  const { list } = currentView;
   return (
     <ul className="flex flex-col gap-y-4 font-medium">
       <li
         className={`px-1 py-2 cursor-pointer text-sm text-center rounded ${
-          currentView === "addTask" || currentView === null
+          list === "addTask" || list === null
             ? "bg-[var(--accent-color)] text-white font-bold"
             : "bg-transparent"
         }`}
         id="addTask"
-        onClick={() => setCurrentView("addTask")}
+        onClick={() => setActive("list", "addTask")}
       >
         Add Task
       </li>
       <li
         className={`px-1 py-2 cursor-pointer text-sm text-center rounded ${
-          currentView === "viewTask"
+          list === "viewTask"
             ? "bg-[var(--accent-color)] text-white font-bold"
             : "bg-transparent"
         }`}
         id="viewTask"
-        onClick={() => setCurrentView("viewTask")}
+        onClick={() => setActive("list", "viewTask")}
       >
         View Task
       </li>

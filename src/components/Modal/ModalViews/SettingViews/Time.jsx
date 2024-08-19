@@ -1,5 +1,5 @@
 import React from "react";
-import { useTimeContext } from "../../../../hooks/TimeProvider";
+import { useTimeContext } from "../../../../hooks/Providers/TimeProvider";
 import useEditTimer from "../../../../hooks/crud/timer/useEditTimer";
 
 const Time = ({ currentView }) => {
@@ -18,16 +18,17 @@ const Time = ({ currentView }) => {
     shortBreakMinutes,
     shortBreakSeconds,
   } = populateTimerValue();
+  const { list } = currentView;
 
   return (
     <div
       className={`transition-opacity delay-75 ${
-        currentView === "timer" ? "opacity-100" : "opacity-0"
+        list === "timer" ? "opacity-100" : "opacity-0"
       }`}
     >
       <form
         className={`${
-          currentView === "timer"
+          list === "timer"
             ? "min-h-[23rem] flex flex-wrap content-between"
             : "hidden"
         }`}

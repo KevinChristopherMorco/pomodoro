@@ -2,18 +2,17 @@ import React from "react";
 import useAudioChange from "../../../../hooks/useAudioChange";
 const Audio = ({ currentView }) => {
   const { handleSound, onSoundChange } = useAudioChange();
+  const { list } = currentView;
   return (
     <div
       className={`transition-opacity delay-75 ${
-        currentView === "sound" ? "h-full opacity-100" : "opacity-0"
+        list === "sound" ? "h-full opacity-100" : "opacity-0"
       }`}
     >
       <form
         onSubmit={handleSound}
         className={`${
-          currentView === "sound"
-            ? "h-full flex flex-wrap content-between"
-            : "hidden"
+          list === "sound" ? "h-full flex flex-wrap content-between" : "hidden"
         }`}
       >
         <div className="w-full flex flex-col gap-y-2">

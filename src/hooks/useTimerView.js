@@ -1,4 +1,4 @@
-import useAudio from "./useAudio";
+import useAudio from "./useAudioActions";
 
 const useTimerView = (setType, setAction) => {
   const { playAudio } = useAudio();

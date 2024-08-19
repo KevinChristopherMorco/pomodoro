@@ -1,22 +1,22 @@
 import React from "react";
 
 import TasksModalList from "./TasksModalList";
-import TasksModalView from "./ModalViews/TaskViews/TasksModalView";
-import useListActive from "../../hooks/useListActive";
+import TasksModalView from "./TasksModalView";
+import useActive from "../../hooks/useActive";
 
-const TasksModal = ({ setModalType, modalType }) => {
-  const { currentView, setCurrentView } = useListActive();
+const TasksModal = ({ modal, clearActive }) => {
+  const { currentView, setActive } = useActive();
   return (
     <div
       className={`transition ${
-        modalType === "tasks-modal"
+        modal === "tasks-modal"
           ? "h-full w-full absolute opacity-100"
           : "opacity-0"
       }`}
     >
       <div
         className={`h-full w-full bg-black bg-opacity-50 absolute ${
-          modalType === "tasks-modal" ? "flex items-start" : "hidden"
+          modal === "tasks-modal" ? "flex items-start" : "hidden"
         }`}
       >
         <div className="w-[95%] my-5 mx-auto px-2 py-4 flex flex-col gap-y-1 bg-[var(--primary-color)] rounded-lg">
@@ -24,16 +24,16 @@ const TasksModal = ({ setModalType, modalType }) => {
             <div>
               <h6 className="text-lg font-bold">Manage Tasks</h6>
             </div>
-            <div className="cursor-pointer" onClick={() => setModalType(null)}>
+            <div
+              className="cursor-pointer"
+              onClick={() => clearActive("modal")}
+            >
               <ion-icon name="close-circle-outline"></ion-icon>
             </div>
           </div>
           <div className="py-4 flex justify-between gap-y-2">
             <div className="basis-[25%]">
-              <TasksModalList
-                currentView={currentView}
-                setCurrentView={setCurrentView}
-              />
+              <TasksModalList currentView={currentView} setActive={setActive} />
             </div>
             <div className="basis-[70%]">
               <TasksModalView currentView={currentView} />

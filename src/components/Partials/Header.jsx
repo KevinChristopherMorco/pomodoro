@@ -1,6 +1,7 @@
 import React from "react";
+import useActive from "../../hooks/useActive";
 
-const Header = ({ setToggle }) => {
+const Header = ({ setActive }) => {
   return (
     <nav className="px-4 py-6 flex justify-between">
       <div className="basis-[40%]">
@@ -10,7 +11,7 @@ const Header = ({ setToggle }) => {
         <div
           className="flex gap-x-1 items-center cursor-pointer"
           id="tasks-modal"
-          onClick={setToggle}
+          onClick={() => setActive("modal", "tasks-modal")}
         >
           <ion-icon name="newspaper-outline"></ion-icon>{" "}
           <p className="text-sm font-medium">My Tasks</p>
@@ -18,7 +19,7 @@ const Header = ({ setToggle }) => {
         <div
           className="flex items-center cursor-pointer"
           id="settings-modal"
-          onClick={setToggle}
+          onClick={() => setActive("modal", "settings-modal")}
         >
           <ion-icon name="settings-outline"></ion-icon>
         </div>

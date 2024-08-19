@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import chick from "../gif/chick.gif";
-import test from "../gif/test.gif";
 
-import { useActiveTask } from "../hooks/TaskActiveProvider";
-import { useTimeContext } from "../hooks/TimeProvider";
-import useAudio from "../hooks/useAudio";
+import { useActiveTask } from "../hooks/Providers/TaskActiveProvider";
+import { useTimeContext } from "../hooks/Providers/TimeProvider";
 
 const Timer = () => {
   const {
@@ -16,7 +14,6 @@ const Timer = () => {
   const { hours, minutes, seconds } = setTimer();
   const { activeId } = useActiveTask();
   const { id } = activeId;
-  const { stopAudio } = useAudio();
 
   const handleAction = () => {
     setAction(!action);

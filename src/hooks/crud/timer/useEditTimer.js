@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useTimeContext } from "../../TimeProvider";
+import { useTimeContext } from "../../Providers/TimeProvider";
 const useEditTimer = () => {
   const {
     timerValues: { setInitialTime },

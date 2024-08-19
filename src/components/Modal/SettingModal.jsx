@@ -1,22 +1,22 @@
 import React from "react";
-import SettingModalView from "./ModalViews/SettingViews/SettingModalView";
+import SettingModalView from "./SettingModalView";
 import SettingModalList from "./SettingModalList";
-import useListActive from "../../hooks/useListActive";
+import useActive from "../../hooks/useActive";
 
-const Modal = ({ setModalType, setMinutes, modalType }) => {
-  const { currentView, setCurrentView } = useListActive();
+const Modal = ({ setMinutes, modal, clearActive }) => {
+  const { currentView, setActive } = useActive();
 
   return (
     <div
       className={`transition ${
-        modalType === "settings-modal"
+        modal === "settings-modal"
           ? "h-full w-full absolute opacity-100"
           : "opacity-0"
       }`}
     >
       <div
         className={`bg-black bg-opacity-50  ${
-          modalType === "settings-modal"
+          modal === "settings-modal"
             ? "h-full w-full flex items-start"
             : "hidden"
         }`}
@@ -26,7 +26,7 @@ const Modal = ({ setModalType, setMinutes, modalType }) => {
             <h6 className="text-lg font-bold">Customize Settings</h6>
             <div
               className="w-fit py-2 flex items-center text-2xl cursor-pointer"
-              onClick={() => setModalType(null)}
+              onClick={() => clearActive("modal")}
             >
               <ion-icon name="close-circle-outline"></ion-icon>
             </div>
@@ -35,7 +35,7 @@ const Modal = ({ setModalType, setMinutes, modalType }) => {
             <div className="basis-[20%]">
               <SettingModalList
                 currentView={currentView}
-                setCurrentView={setCurrentView}
+                setActive={setActive}
               />
             </div>
             <div className="basis-[70%]">

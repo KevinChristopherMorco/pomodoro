@@ -3,19 +3,18 @@ import { useTheme } from "../../../../hooks/useTheme";
 
 const Theme = ({ currentView }) => {
   const { handleTheme, onThemeChange } = useTheme();
+  const { list } = currentView;
 
   return (
     <div
       className={`transition-opacity delay-75 ${
-        currentView === "theme" || currentView === null
-          ? "h-full opacity-100"
-          : "opacity-0"
+        list === "theme" || list === null ? "h-full opacity-100" : "opacity-0"
       }`}
     >
       <form
         onSubmit={handleTheme}
         className={`${
-          currentView === "theme" || currentView === null
+          list === "theme" || list === null
             ? "h-full flex flex-wrap content-between"
             : "hidden"
         }`}

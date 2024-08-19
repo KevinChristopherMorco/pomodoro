@@ -6,28 +6,24 @@ import Header from "./components/Partials/Header";
 import SettingModal from "./components/Modal/SettingModal";
 import TasksModal from "./components/Modal/TasksModal";
 
-import useToggleModal from "./hooks/useToggleModal";
-import { useState } from "react";
-import { TimerProvider } from "./hooks/TimeProvider";
-import { TaskActiveProvider } from "./hooks/TaskActiveProvider";
+import useActive from "./hooks/useActive";
+
+import { TimerProvider } from "./hooks/Providers/TimeProvider";
+import { TaskActiveProvider } from "./hooks/Providers/TaskActiveProvider";
 
 function App() {
-  const [settings, setSettings] = useState(false);
-  const { modalType, setToggle, setModalType } = useToggleModal();
+  const { currentView, setActive, clearActive } = useActive();
+  const { modal } = currentView;
 
   return (
     <>
-      <Header setToggle={setToggle} />
+      <Header setActive={setActive} />
       <TimerProvider>
         <TaskActiveProvider>
           <Timer />
-          <SettingModal
-            settings={settings}
-            setModalType={setModalType}
-            modalType={modalType}
-          />
+          <SettingModal clearActive={clearActive} modal={modal} />
 
-          <TasksModal setModalType={setModalType} modalType={modalType} />
+          <TasksModal modal={modal} clearActive={clearActive} />
         </TaskActiveProvider>
       </TimerProvider>
     </>
