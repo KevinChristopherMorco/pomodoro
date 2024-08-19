@@ -6,7 +6,7 @@ import { useActiveTask } from "../../../../hooks/Providers/TaskActiveProvider";
 
 const ViewTask = ({ currentView }) => {
   const { storage } = useStorageContext();
-  const { setTimerTask, activeId } = useActiveTask();
+  const { setTimerTask, activeId, clearTask } = useActiveTask();
   const { list } = currentView;
 
   const emptyTask = () => {
@@ -28,6 +28,7 @@ const ViewTask = ({ currentView }) => {
           initialTask={initialTask}
           active={tasksIds === activeIds}
           setTimerTask={setTimerTask}
+          clearTask={clearTask}
           status={status}
         />
       );
@@ -43,7 +44,7 @@ const ViewTask = ({ currentView }) => {
       <div
         className={`${
           list === "viewTask"
-            ? "h-full overflow-scroll flex flex-wrap content-start gap-y-5"
+            ? "h-full overflow-scroll overflow-x-hidden scrollbar flex flex-wrap content-start gap-y-5"
             : "hidden"
         }`}
       >

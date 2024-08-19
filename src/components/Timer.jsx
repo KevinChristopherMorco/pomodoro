@@ -1,5 +1,4 @@
 import React from "react";
-import chick from "../gif/chick.gif";
 
 import { useActiveTask } from "../hooks/Providers/TaskActiveProvider";
 import { useTimeContext } from "../hooks/Providers/TimeProvider";
@@ -57,15 +56,6 @@ const Timer = () => {
       </ul>
       <div className="p-4 flex flex-col items-center gap-y-14">
         <div className="flex flex-col gap-y-10 text-center">
-          {/* <img
-            src={minutes === 0 ? test : chick}
-            alt=""
-            className={`transition-all duration-500 ${
-              action
-                ? "opacity-100 max-h-52"
-                : "opacity-0 max-h-0 overflow-hidden"
-            }`}
-          /> */}
           <h1 className="text-5xl font-bold">
             {String(hours).padStart(2, 0)} : {String(minutes).padStart(2, 0)} :{" "}
             {String(seconds).padStart(2, 0)}
@@ -77,7 +67,7 @@ const Timer = () => {
                 : "opacity-0 max-h-0 overflow-hidden"
             }`}
           >
-            Chicken is growing...
+            Finishing a task...
           </h6>
         </div>
         <div className={`flex justify-center gap-x-10 ${!id && "hidden"}`}>

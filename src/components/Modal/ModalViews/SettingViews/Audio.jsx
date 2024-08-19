@@ -1,5 +1,5 @@
 import React from "react";
-import useAudioChange from "../../../../hooks/useAudioChange";
+import useAudioChange from "../../../../hooks/crud/audio/useAudioChange";
 const Audio = ({ currentView }) => {
   const { handleSound, onSoundChange } = useAudioChange();
   const { list } = currentView;

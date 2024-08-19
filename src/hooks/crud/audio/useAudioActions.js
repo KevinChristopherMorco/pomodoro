@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { useTimeContext } from "./Providers/TimeProvider";
+import { useTimeContext } from "../../Providers/TimeProvider";
 
-import alarmBeep from "../sounds/alarmBeep.mp3";
-import carAlarm from "../sounds/carAlarm.mp3";
-import mrClown from "../sounds/mrClown.mp3";
+import alarmBeep from "../../../sounds/alarmBeep.mp3";
+import carAlarm from "../../../sounds/carAlarm.mp3";
+import mrClown from "../../../sounds/mrClown.mp3";
 
 const useAudio = () => {
   const {

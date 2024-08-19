@@ -76,7 +76,22 @@
   }
 
   #root {
-    @apply h-full min-h-full flex flex-col relative;
+    @apply h-full min-h-full flex flex-col relative w-full md:mx-auto md:w-[60%] lg:w-[50%] xl:w-[40%] 2xl:w-[30%];
+  }
+}
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: var(--secondary-color);
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
   }
 }
 

@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Pomodoro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple app that helps you manage your time when doing tasks.
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+**Client:** HTML, CSS, JavaScript, React, TailwindCSS, Web Storage API
 
-### `npm start`
+## Screenshots
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Pomodoro](assets/screenshots/pomodoro.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Lessons Learned
 
-### `npm test`
+While doing the project I've encountered new advanced concepts in react that was the Context API and the Custom Hooks. I've learned that we can use Context API to share a global state that can be shared between multiple components and custom hooks for making functions and states more maintanable especially when building complex apps.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Also while reading the documentation of Context API it also suggest that it minimize prop drilling which was a new term for me when I encountered it, and upon checking my previous projects I've been using prop drilling in my projects.
 
-### `npm run build`
+This terms would be useful for me in the future projects that I'm going to build since I find it difficult to maintain props if the layers become to deep like passing props from parent > children > grandchildren > etc,. For custom hooks the advantage is that I can write cleaner code and hooks that provide more context on what the code does.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## The Challenges
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+I’ve found these concepts to be quite tricky, especially when using Context sometimes I tend to overuse it where some state declaration can be done in more simpler ways, but I’m committed to mastering them.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I believe that by practicing and studying these topics, I’ll become more proficient in building efficient and maintainable React applications.
 
-### `npm run eject`
+## Acknowledgements
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+These lists of documentation are what I'm currently using:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [React](https://react.dev/)
+- [MDN Web Docs](https://developer.mozilla.org/)
+- [W3Schools](https://www.w3schools.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+For video tutorials:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [@WebDevSimplified](https://www.youtube.com/c/webdevsimplified)

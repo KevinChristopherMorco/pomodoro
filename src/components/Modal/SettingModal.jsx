@@ -15,7 +15,7 @@ const Modal = ({ setMinutes, modal, clearActive }) => {
       }`}
     >
       <div
-        className={`bg-black bg-opacity-50  ${
+        className={`bg-[var(--primary-color)] bg-opacity-50  ${
           modal === "settings-modal"
             ? "h-full w-full flex items-start"
             : "hidden"

@@ -15,7 +15,7 @@ const TasksModal = ({ modal, clearActive }) => {
       }`}
     >
       <div
-        className={`h-full w-full bg-black bg-opacity-50 absolute ${
+        className={`h-full w-full bg-[var(--primary-color)] bg-opacity-50 absolute ${
           modal === "tasks-modal" ? "flex items-start" : "hidden"
         }`}
       >

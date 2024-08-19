@@ -5,9 +5,6 @@ const Toast = Swal.mixin({
   position: "top-end",
   showConfirmButton: false,
   timerProgressBar: true,
-  customClass: {
-    popup: "!bg-[var(--secondary-color)] !text-[var(--text-accent-color)]",
-  },
 });
 
 const successAlert = (customMessage) => {
@@ -17,7 +14,11 @@ const successAlert = (customMessage) => {
     width: "70%",
     icon: "success",
     iconColor: "green",
-    timer: 2000,
+    timer: 2500,
+    customClass: {
+      popup:
+        "!bg-[var(--secondary-color)] !text-[var(--text-accent-color)] !w-[20rem]",
+    },
   });
 };
 
@@ -29,6 +30,10 @@ const errorAlert = () => {
     icon: "error",
     iconColor: "red",
     timer: 3500,
+    customClass: {
+      popup:
+        "!bg-[var(--secondary-color)] !text-[var(--text-accent-color)] !w-[30rem]",
+    },
   });
 };
 

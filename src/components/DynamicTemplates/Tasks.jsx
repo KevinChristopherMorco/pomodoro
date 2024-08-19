@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useEditTask from "../../hooks/crud/tasks/useEditTask";
 import useDeleteTask from "../../hooks/crud/tasks/useDeleteTask";
 
-const Tasks = ({ initialTask, active, setTimerTask, status }) => {
+const Tasks = ({ initialTask, active, setTimerTask, clearTask, status }) => {
   const [hover, setHover] = useState(false);
   const { title, note, currentPomodoro, totalPomodoro } = initialTask;
   const { handleDelete } = useDeleteTask(initialTask);
@@ -81,38 +81,42 @@ const Tasks = ({ initialTask, active, setTimerTask, status }) => {
         {status !== "complete" && (
           <div
             className="flex items-center gap-x-1 text-[var(--text-color)]"
-            onClick={() => setTimerTask(initialTask.id)}
+            onClick={
+              active ? () => clearTask() : () => setTimerTask(initialTask.id)
+            }
           >
             <ion-icon name="alarm-outline"></ion-icon>
-            <p className="text-[0.75rem]">Enable</p>
+            <p className="text-[0.75rem]">{active ? "Pause" : "Enable"}</p>
           </div>
         )}
-        <div
-          className={` text-lg text-[var(--text-color)] ${
-            hover ? "flex gap-x-4 items-center" : "hidden"
-          }`}
-        >
+        {!active && (
           <div
-            className="flex items-center cursor-pointer"
-            onClick={edit ? () => setEdit(false) : handleDelete}
+            className={` text-lg text-[var(--text-color)] ${
+              hover ? "flex gap-x-4 items-center" : "hidden"
+            }`}
           >
-            {edit ? (
-              <ion-icon name="close-circle-outline"></ion-icon>
-            ) : (
-              <ion-icon name="trash-outline"></ion-icon>
-            )}
+            <div
+              className="flex items-center cursor-pointer"
+              onClick={edit ? () => setEdit(false) : handleDelete}
+            >
+              {edit ? (
+                <ion-icon name="close-circle-outline"></ion-icon>
+              ) : (
+                <ion-icon name="trash-outline"></ion-icon>
+              )}
+            </div>
+            <div
+              className={`flex items-center cursor-pointer`}
+              onClick={edit ? handleTaskSubmit : () => setEdit(true)}
+            >
+              {edit ? (
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              ) : (
+                <ion-icon name="create-outline"></ion-icon>
+              )}
+            </div>
           </div>
-          <div
-            className={`flex items-center cursor-pointer`}
-            onClick={edit ? handleTaskSubmit : () => setEdit(true)}
-          >
-            {edit ? (
-              <ion-icon name="checkmark-circle-outline"></ion-icon>
-            ) : (
-              <ion-icon name="create-outline"></ion-icon>
-            )}
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
